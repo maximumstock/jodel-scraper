@@ -2,6 +2,9 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :jodel_scraper, JodelScraper,
+  base_scraping_interval: 300
+
 config :jodel_scraper, JodelScraper.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "jodel",

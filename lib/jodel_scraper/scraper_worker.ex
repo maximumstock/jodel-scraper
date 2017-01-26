@@ -25,7 +25,7 @@ defmodule JodelScraper.ScraperWorker do
 
   def handle_info(:work, state) do
     scrape(state.token.access_token, state.type);
-    schedule_scraping(state.interval, Enum.random(1..30));
+    schedule_scraping(state.interval + Enum.random(1..120));
     {:noreply, state}
   end
 
@@ -39,7 +39,7 @@ defmodule JodelScraper.ScraperWorker do
     authenticate(state.location.city, state.location.lat, state.location.lng)
     |> update_token
 
-    schedule_scraping(0, Enum.random(1..30))
+    schedule_scraping(Enum.random(1..60))
   end
 
   def authenticate(city, lat, lng) do
@@ -75,9 +75,9 @@ defmodule JodelScraper.ScraperWorker do
     end
   end
 
-  defp schedule_scraping(interval, delay) do
-    IO.puts("Scraping in #{interval + delay} seconds")
-    Process.send_after(self(), :work, (interval + delay) * 1000)
+  defp schedule_scraping(delay) do
+    IO.puts("Scraping in #{delay} seconds")
+    Process.send_after(self(), :work, delay * 1000)
   end
 
   defp save_to_db(posts) when is_list(posts), do: Enum.each(posts, fn p -> save_to_db(p) end)
