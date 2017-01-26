@@ -2,14 +2,14 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :jodel_scraper, Jodels.Repo,
+config :jodel_scraper, JodelScraper.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "jodel",
   username: "jodel",
   password: "jodel",
   hostname: "localhost"
 
- config :jodel_scraper, ecto_repos: [Jodels.Repo]
+ config :jodel_scraper, ecto_repos: [JodelScraper.Repo]
 
 
 # This configuration is loaded before any dependency and is restricted
