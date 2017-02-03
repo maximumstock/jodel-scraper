@@ -25,7 +25,8 @@ defmodule JodelScraper.ScraperWorker do
 
   def handle_info(:work, state) do
     scrape(state.token.access_token, state.type);
-    schedule_scraping(state.interval + Enum.random(1..120));
+    # schedule_scraping(state.interval + Enum.random(1..120));
+    schedule_scraping(5)
     {:noreply, state}
   end
 
@@ -39,7 +40,8 @@ defmodule JodelScraper.ScraperWorker do
     authenticate(state.location.city, state.location.lat, state.location.lng)
     |> update_token
 
-    schedule_scraping(Enum.random(1..60))
+    # schedule_scraping(Enum.random(1..60))
+    schedule_scraping(0)
   end
 
   def authenticate(city, lat, lng) do
@@ -54,6 +56,7 @@ defmodule JodelScraper.ScraperWorker do
 
   def scrape(token, type) do
     get_all_jodels(token, type)
+    |> filter_duplicates
     |> process
     |> save_to_db
   end
@@ -91,6 +94,13 @@ defmodule JodelScraper.ScraperWorker do
 
   end
 
+  defp filter_duplicates(posts) do
+
+    # sort posts by "updated_at" timestamp in ascending order
+    posts = posts |> Enum.sort(fn (e1, e2) -> e1["updated_at"] <= e2["updated_at"] end)
+
+  end
+
   defp process(posts) do
 
     posts
@@ -122,12 +132,11 @@ defmodule JodelScraper.ScraperWorker do
       hex_color: post["color"],
       distance: Map.get(post, "distance", 0),
       child_count: Map.get(post, "child_count", 0),
-      is_image: post["is_image"],
       vote_count: Map.get(post, "vote_count", 0),
       location_name: post["location"]["name"],
       user_handle: post["user_handle"],
       image_url: post["image_url"],
-      parent: post["parent"],
+      parent: Map.get(post, "parent", nil),
       created_at: created_at,
       updated_at: updated_at,
     }

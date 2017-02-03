@@ -9,7 +9,6 @@ defmodule JodelScraper.Jodel do
     field :hex_color, :string
     field :distance, :integer
     field :child_count, :integer
-    field :is_image, :boolean
     field :vote_count, :integer
     field :location_name, :string
     field :user_handle, :string
