@@ -24,10 +24,17 @@ defmodule JodelScraper.ScraperWorker do
   end
 
   def handle_info(:work, state) do
-    scrape(state.token.access_token, state.type);
-    # schedule_scraping(state.interval + Enum.random(1..120));
-    schedule_scraping(5)
+
+    case state.type do
+      :popular    -> scrape(state.token.access_token, "popular")
+      :discussed  -> scrape(state.token.access_token, "discussed")
+      _           -> scrape(state.token.access_token, "")
+    end
+
+    schedule_scraping(state.interval)
+
     {:noreply, state}
+
   end
 
 
@@ -40,7 +47,6 @@ defmodule JodelScraper.ScraperWorker do
     authenticate(state.location.city, state.location.lat, state.location.lng)
     |> update_token
 
-    # schedule_scraping(Enum.random(1..60))
     schedule_scraping(0)
   end
 
@@ -69,7 +75,7 @@ defmodule JodelScraper.ScraperWorker do
 
     jodels = API.get_jodels(token, type, [limit: limit, skip: skip])
       |> parse_successful_response
-      |> Map.get("posts")
+      |> Map.get("posts", [])
 
     if length(jodels) == limit do
       get_all_jodels_perpetually(token, type, limit, limit + skip, posts ++ jodels)
@@ -104,20 +110,19 @@ defmodule JodelScraper.ScraperWorker do
   defp process(posts) do
 
     posts
-    |> flatten_posts # list of posts with children -> list of lists of posts and children
+    |> Enum.map(&(flatten_post &1)) # list of posts with children -> list of lists of posts and children
     |> List.flatten # list of lists of posts and children -> list of posts and children
     |> Enum.map(&(transform_post &1)) # list of posts and children -> list of posts|children with the relevant data
 
   end
 
-  defp flatten_posts(posts), do: Enum.map(posts, fn post -> flatten_post(post) end)
-
   defp flatten_post(%{"children" => _} = post), do: [post] ++ extract_post_comments(post)
   defp flatten_post(%{} = post), do: [post]
 
-  defp extract_post_comments(%{"children" => []}), do: []
   defp extract_post_comments(%{"children" => nil}), do: []
-  defp extract_post_comments(%{"children" => list, "post_id" => post_id}), do: Enum.map(list, fn e -> Map.put(e, "parent", post_id) end)
+  defp extract_post_comments(%{"children" => list, "post_id" => post_id}) do
+    Enum.map(list, fn e -> Map.put(e, "parent", post_id) end)
+  end
   defp extract_post_comments(_), do: []
 
   defp transform_post(post) do
@@ -146,6 +151,8 @@ defmodule JodelScraper.ScraperWorker do
   defp parse_successful_response({:ok, %{body: body, status_code: 200}}) do
     body |> Poison.decode!
   end
+
+  defp parse_successful_response(_), do: %{}
 
   defp extract_token_data(token) do
     %{

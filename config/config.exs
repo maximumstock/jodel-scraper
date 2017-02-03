@@ -3,7 +3,7 @@
 use Mix.Config
 
 config :jodel_scraper, JodelScraper,
-  base_scraping_interval: 300
+  base_scraping_interval: 60
 
 config :jodel_scraper, JodelScraper.Repo,
   adapter: Ecto.Adapters.Postgres,

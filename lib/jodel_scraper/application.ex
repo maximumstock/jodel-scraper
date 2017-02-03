@@ -41,26 +41,14 @@ defmodule JodelScraper.Application do
 
     base_scraping_interval = Application.get_env(:jodel_scraper, JodelScraper)[:base_scraping_interval]
 
-    popular_scraper_children = Enum.map(locations, fn loc -> worker(JodelScraper.ScraperWorker, [%{
+    scraper_children = Enum.map(locations, fn loc -> worker(JodelScraper.ScraperWorker, [%{
         location: loc,
-        type: "popular",
-        interval: base_scraping_interval
-      }], [id: make_ref()]) end)
-
-    recent_scraper_children = Enum.map(locations, fn loc -> worker(JodelScraper.ScraperWorker, [%{
-        location: loc,
-        type: "",
-        interval: 60
-      }], [id: make_ref()]) end)
-
-    discussed_scraper_children = Enum.map(locations, fn loc -> worker(JodelScraper.ScraperWorker, [%{
-        location: loc,
-        type: "discussed",
+        type: :popular,
         interval: base_scraping_interval
       }], [id: make_ref()]) end)
 
 
-    children = children ++ popular_scraper_children ++ recent_scraper_children ++ discussed_scraper_children
+    children = children ++ scraper_children
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
