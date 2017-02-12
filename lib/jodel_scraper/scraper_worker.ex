@@ -1,7 +1,7 @@
-defmodule JodelScraper.ScraperWorker do
+defmodule ScraperWorker do
   use GenServer
 
-  alias JodelScraper.JodelApiClient, as: API
+  alias JodelClient, as: API
   alias JodelScraper.Jodel
   alias JodelScraper.Repo
 
@@ -61,28 +61,11 @@ defmodule JodelScraper.ScraperWorker do
   end
 
   def scrape(token, type) do
-    get_all_jodels(token, type)
-    |> filter_duplicates
+    API.get_all_jodels(token, type)
     |> process
     |> save_to_db
   end
 
-  def get_all_jodels(token, type) do
-    get_all_jodels_perpetually(token, type, 100, 0, [])
-  end
-
-  defp get_all_jodels_perpetually(token, type, limit, skip, posts) do
-
-    jodels = API.get_jodels(token, type, [limit: limit, skip: skip])
-      |> parse_successful_response
-      |> Map.get("posts", [])
-
-    if length(jodels) == limit do
-      get_all_jodels_perpetually(token, type, limit, limit + skip, posts ++ jodels)
-    else
-      posts ++ jodels
-    end
-  end
 
   defp schedule_scraping(delay) do
     IO.puts("Scraping in #{delay} seconds")
@@ -100,16 +83,10 @@ defmodule JodelScraper.ScraperWorker do
 
   end
 
-  defp filter_duplicates(posts) do
-
-    # sort posts by "updated_at" timestamp in ascending order
-    posts = posts |> Enum.sort(fn (e1, e2) -> e1["updated_at"] <= e2["updated_at"] end)
-
-  end
-
   defp process(posts) do
 
     posts
+    |> Enum.sort(fn (e1, e2) -> e1["updated_at"] <= e2["updated_at"] end)
     |> Enum.map(&(flatten_post &1)) # list of posts with children -> list of lists of posts and children
     |> List.flatten # list of lists of posts and children -> list of posts and children
     |> Enum.map(&(transform_post &1)) # list of posts and children -> list of posts|children with the relevant data
@@ -119,7 +96,7 @@ defmodule JodelScraper.ScraperWorker do
   defp flatten_post(%{"children" => _} = post), do: [post] ++ extract_post_comments(post)
   defp flatten_post(%{} = post), do: [post]
 
-  defp extract_post_comments(%{"children" => nil}), do: []
+  defp extract_post_comments(%{"children" => nil}), do: [] # somehow needed, as some responses are malformed
   defp extract_post_comments(%{"children" => list, "post_id" => post_id}) do
     Enum.map(list, fn e -> Map.put(e, "parent", post_id) end)
   end

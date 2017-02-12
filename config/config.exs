@@ -10,8 +10,7 @@ config :jodel_scraper, JodelScraper.Repo,
   database: "jodel",
   username: "jodel",
   password: "jodel",
-  hostname: "localhost",
-  log_level: :info
+  hostname: "localhost"
 
  config :jodel_scraper, ecto_repos: [JodelScraper.Repo]
 

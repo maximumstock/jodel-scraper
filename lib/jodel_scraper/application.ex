@@ -41,7 +41,7 @@ defmodule JodelScraper.Application do
 
     base_scraping_interval = Application.get_env(:jodel_scraper, JodelScraper)[:base_scraping_interval]
 
-    scraper_children = Enum.map(locations, fn loc -> worker(JodelScraper.ScraperWorker, [%{
+    scraper_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
         location: loc,
         type: :popular,
         interval: base_scraping_interval
