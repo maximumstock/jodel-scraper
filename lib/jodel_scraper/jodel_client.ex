@@ -2,12 +2,13 @@ defmodule JodelClient do
 
   @endpoint_v2  "https://api.go-tellm.com/api/v2/"
   # @endpoint_v3  "https://api.go-tellm.com/api/v3/"
-  @client_type  "android_4.29.1" # Android OS version?! (via JodelJS)
+  @app_version  "android_4_29.1" # Android OS version?! (via JodelJS)
+  @secret       "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # Jodel client id (see various client implementations on GitHub)
-  # @device_uid   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" # randomly generated SHA256 hash
+  @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" #"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" # randomly generated SHA256 hash
 
   # @client_id    "cd871f92-a23f-4afc-8fff-51ff9dc9184e" # Jodel client id (see various client implementations on GitHub)
-  @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
+  # @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
 
   @max_jodels_per_request 100
 
@@ -60,7 +61,7 @@ defmodule JodelClient do
     mac = method <> "%" <> url <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
 
     # create HMAC SHA1 hash
-    :crypto.hmac(:sha, mac, @client_id) |> Base.encode16
+    :crypto.hmac(:sha, mac, @secret) |> Base.encode16
 
   end
 
@@ -88,14 +89,15 @@ defmodule JodelClient do
 
   defp default_headers do
 
-    hmac = generate_hmac("", "", "", "")
+    hmac = generate_hmac("GET", "https://api.go-tellm.com:443", "/api/v2/posts/location", "")
     [
-      "Accept": "application/json; charset=utf-8",
-      "X-Client-Type": @client_type,
+      "Accept": "application/json; charset=UTF-8",
+      "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)",
+      "X-Client-Type": @app_version,
       "X-Api-Version": "0.2",
       "X-Timestamp": DateTime.utc_now |> DateTime.to_string,
       "X-Authorization": "HMAC #{hmac}",
-      "Content-Type": "application/json; charset=utf-8"
+      "Content-Type": "application/json; charset=UTF-8"
     ]
 
   end
