@@ -24,6 +24,7 @@ defmodule ScraperWorker do
   end
 
   def handle_info(:work, state) do
+    IO.puts("Scraping #{state.type} posts for #{state.location.city}")
 
     case state.type do
       :popular    -> scrape(state.token.access_token, "popular")
@@ -32,9 +33,7 @@ defmodule ScraperWorker do
     end
 
     schedule_scraping(state.interval)
-
     {:noreply, state}
-
   end
 
 
@@ -63,33 +62,35 @@ defmodule ScraperWorker do
   def scrape(token, type) do
     API.get_all_jodels(token, type)
     |> process
-    |> save_to_db
+    |> Enum.each(&(save_to_db &1))
   end
 
 
   defp schedule_scraping(delay) do
-    IO.puts("Scraping in #{delay} seconds")
     Process.send_after(self(), :work, delay * 1000)
   end
 
-  defp save_to_db(posts) when is_list(posts), do: Enum.each(posts, fn p -> save_to_db(p) end)
-  defp save_to_db(post) do
+  # defp save_to_db(post) do
+  #    post_changeset = Ecto.Changeset.change(%Jodel{}, post)
+  #    Repo.insert(post_changeset, on_conflict: :replace_all, conflict_target: [:updated_at, :vote_count, :pin_count, :child_count])
+  # end
 
+  defp save_to_db(post) do
     case Repo.get(Jodel, post.post_id) do
       nil       -> Ecto.Changeset.change(%Jodel{}, post) # Post not found, we build one
       old_post  -> Ecto.Changeset.change(old_post, post) # Post exists, let's use it
     end
     |> Repo.insert_or_update
-
   end
 
   defp process(posts) do
 
     posts
-    |> Enum.sort(fn (e1, e2) -> e1["updated_at"] <= e2["updated_at"] end)
-    |> Enum.map(&(flatten_post &1)) # list of posts with children -> list of lists of posts and children
-    |> List.flatten # list of lists of posts and children -> list of posts and children
-    |> Enum.map(&(transform_post &1)) # list of posts and children -> list of posts|children with the relevant data
+    |> Enum.sort(fn (e1, e2) -> e1["updated_at"] >= e2["updated_at"] end) # sort in descending order
+    |> Stream.uniq(fn e -> e["post_id"] end) # filter out all identical post_ids that appear second or later
+    # now there should only be the most recent version for each post, assuming there were duplicates before
+    |> Stream.flat_map(&(flatten_post &1)) # list of posts with children -> list of lists of posts and children
+    |> Stream.map(&(transform_post &1)) # list of posts and children -> list of posts|children with the relevant data
 
   end
 

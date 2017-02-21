@@ -32,6 +32,7 @@ defmodule JodelScraper.Mixfile do
     [{:postgrex, ">= 0.0.0"},
      {:ecto, "~> 2.1.2"},
      {:httpoison, "~> 0.11.0"},
-     {:poison, "~> 3.0"}]
+     {:poison, "~> 3.0"},
+     {:distillery, "~> 1.0"}]
   end
 end

@@ -47,7 +47,6 @@ defmodule JodelScraper.Application do
         interval: base_scraping_interval
       }], [id: make_ref()]) end)
 
-
     children = children ++ scraper_children
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

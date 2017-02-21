@@ -4,10 +4,10 @@ defmodule JodelClient do
   # @endpoint_v3  "https://api.go-tellm.com/api/v3/"
   @client_type  "android_4.29.1" # Android OS version?! (via JodelJS)
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # Jodel client id (see various client implementations on GitHub)
-  @device_uid   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" # randomly generated SHA256 hash
+  # @device_uid   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" # randomly generated SHA256 hash
 
   # @client_id    "cd871f92-a23f-4afc-8fff-51ff9dc9184e" # Jodel client id (see various client implementations on GitHub)
-  # @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
+  @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
 
   @max_jodels_per_request 100
 
