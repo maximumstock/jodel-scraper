@@ -5,6 +5,8 @@ defmodule ScraperWorker do
   alias JodelScraper.Jodel
   alias JodelScraper.Repo
 
+  require Logger
+
   def start_link(state, options \\ []) do
     GenServer.start_link(__MODULE__, state, options)
   end
@@ -24,7 +26,7 @@ defmodule ScraperWorker do
   end
 
   def handle_info(:work, state) do
-    IO.puts("Scraping #{state.type} posts for #{state.location.city}")
+    Logger.info("Scraping #{state.type} posts for #{state.location.city}")
 
     case state.type do
       :popular    -> scrape(state.token.access_token, "popular")
@@ -41,7 +43,7 @@ defmodule ScraperWorker do
   # API
 
   def start(state) do
-    IO.puts("Started new #{state.type}-scraper for #{state.location.city} (every #{state.interval}s)")
+    Logger.info("Started new #{state.type}-scraper for #{state.location.city} (every #{state.interval}s)")
 
     authenticate(state.location.city, state.location.lat, state.location.lng)
     |> update_token

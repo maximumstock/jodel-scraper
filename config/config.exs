@@ -12,7 +12,10 @@ config :jodel_scraper, JodelScraper.Repo,
   password: "jodel",
   hostname: "localhost"
 
- config :jodel_scraper, ecto_repos: [JodelScraper.Repo]
+config :jodel_scraper, ecto_repos: [JodelScraper.Repo]
+
+config :logger, :console,
+  format: "$time $metadata[$level] $levelpad$message\n"
 
 
 # This configuration is loaded before any dependency and is restricted
