@@ -46,15 +46,15 @@ defmodule ScraperWorker do
     Logger.info("Started new #{state.type}-scraper for #{state.location.city} (every #{state.interval}s)")
 
     authenticate(state.location.city, state.location.lat, state.location.lng)
-    |> update_token
 
     schedule_scraping(0)
   end
 
   def authenticate(city, lat, lng) do
     API.request_token(city, lat, lng)
-    |> parse_successful_response
+    |> parse_response
     |> extract_token_data
+    |> update_token
   end
 
   def update_token(token) do
@@ -72,11 +72,6 @@ defmodule ScraperWorker do
     Process.send_after(self(), :work, delay * 1000)
   end
 
-  # defp save_to_db(post) do
-  #    post_changeset = Ecto.Changeset.change(%Jodel{}, post)
-  #    Repo.insert(post_changeset, on_conflict: :replace_all, conflict_target: [:updated_at, :vote_count, :pin_count, :child_count])
-  # end
-
   defp save_to_db(post) do
     case Repo.get(Jodel, post.post_id) do
       nil       -> Ecto.Changeset.change(%Jodel{}, post) # Post not found, we build one
@@ -86,6 +81,8 @@ defmodule ScraperWorker do
   end
 
   defp process(posts) do
+
+    Logger.info("Processing #{length(posts)} jodels")
 
     posts
     |> Enum.sort(fn (e1, e2) -> e1["updated_at"] >= e2["updated_at"] end) # sort in descending order
@@ -128,12 +125,16 @@ defmodule ScraperWorker do
 
   end
 
-  defp parse_successful_response({:ok, %{body: body, status_code: 200}}) do
+  defp parse_response({:ok, %{body: body, status_code: 200}}) do
     body |> Poison.decode!
   end
+  defp parse_response({type, %{status_code: status_code}}) do
+    Logger.info("Error when authenticating #{status_code}")
+    %{}
+  end
+  defp parse_response(_), do: %{}
 
-  defp parse_successful_response(_), do: %{}
-
+  defp extract_token_data(%{}), do: %{}
   defp extract_token_data(token) do
     %{
       access_token: token["access_token"],

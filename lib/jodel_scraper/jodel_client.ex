@@ -44,7 +44,7 @@ defmodule JodelClient do
 
   def get_jodels(token, type, opts \\ []) do
     url = @endpoint_v2 <> "posts/location/" <> type <> query(opts)
-    headers = default_headers() ++ ["Authorization": "Bearer #{token}"]
+    headers = default_headers(token, "GET", url, "") ++ ["Authorization": "Bearer #{token}"]
     HTTPoison.get(url, headers)
   end
 
@@ -91,7 +91,7 @@ defmodule JodelClient do
 
     hmac = generate_hmac(token, method, url, body)
 
-    IO.inspect [
+    [
       "Accept": "application/json; charset=utf-8",
       #"User-Agent": "node-superagent/3.3.1",
       "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)",
@@ -121,8 +121,9 @@ defmodule JodelClient do
   end
 
   defp extract_jodels({:ok, %{status_code: 200, body: body}}) do
-    Poison.decode!(body) |> Map.get("posts", [])
+    body |> Poison.decode! |> Map.get("posts", [])
   end
+
   defp extract_jodels(_), do: []
 
 end
