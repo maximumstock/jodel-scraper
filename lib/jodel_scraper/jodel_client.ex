@@ -22,7 +22,7 @@ defmodule JodelClient do
 
     login_url = @endpoint_v2 <> "users"
     body = authentication_data(city_name, lat, lng)
-    headers = default_headers()
+    headers = default_headers("", "POST", login_url, body)
 
     HTTPoison.post(login_url, body, headers)
 
@@ -55,13 +55,12 @@ defmodule JodelClient do
   # HELPERS
 
   # Computes a HMAC signature hash for authentication purposes
-  defp generate_hmac(method, url, token, body) do
+  defp generate_hmac(token, method, url, body) do
 
     # build some message authentication code
-    mac = method <> "%" <> url <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
-
+    mac = method <> "%" <> url <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_iso8601()}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
-    :crypto.hmac(:sha, mac, @secret) |> Base.encode16
+    :crypto.hmac(:sha256, mac, @client_id) |> Base.encode64
 
   end
 
@@ -87,15 +86,16 @@ defmodule JodelClient do
 
   end
 
-  defp default_headers do
+  defp default_headers(token \\ "", method \\ "", url \\ "", body \\ "") do
 
-    hmac = generate_hmac("GET", "https://api.go-tellm.com:443", "/api/v2/posts/location", "")
-    [
+    hmac = generate_hmac(token, method, url, body)
+
+    IO.inspect [
       "Accept": "application/json; charset=UTF-8",
       "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)",
       "X-Client-Type": @app_version,
       "X-Api-Version": "0.2",
-      "X-Timestamp": DateTime.utc_now |> DateTime.to_string,
+      "X-Timestamp": DateTime.utc_now |> DateTime.to_iso8601(),
       "X-Authorization": "HMAC #{hmac}",
       "Content-Type": "application/json; charset=UTF-8"
     ]

@@ -59,7 +59,7 @@ defmodule JodelScraper.Application do
         interval: 2*base_scraping_interval
       }], [id: make_ref()]) end)
 
-    children = children ++ popular_children ++ recent_children ++ discussed_children
+    children = children #++ popular_children ++ recent_children ++ discussed_children
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
