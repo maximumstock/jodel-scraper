@@ -2,7 +2,7 @@ defmodule JodelClient do
 
   @endpoint_v2  "https://api.go-tellm.com/api/v2/"
   # @endpoint_v3  "https://api.go-tellm.com/api/v3/"
-  @app_version  "android_4_29.1" # Android OS version?! (via JodelJS)
+  @app_version  "android_4.29.1" # Android OS version?! (via JodelJS)
   @secret       "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # Jodel client id (see various client implementations on GitHub)
   @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" #"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" # randomly generated SHA256 hash
@@ -57,10 +57,11 @@ defmodule JodelClient do
   # Computes a HMAC signature hash for authentication purposes
   defp generate_hmac(token, method, url, body) do
 
-    # build some message authentication code
-    mac = method <> "%" <> url <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_iso8601()}" <> "%" <> "" <> "%" <> body
+    purl = URI.parse(url)
+    raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
-    :crypto.hmac(:sha256, mac, @client_id) |> Base.encode64
+    :crypto.hmac(:sha, raw, @secret) |> Base.encode16 |> String.downcase
+    #"1ddbf34d9b3f38d9cc2297a1fbfbb8ff2b681d1b"
 
   end
 
@@ -91,13 +92,14 @@ defmodule JodelClient do
     hmac = generate_hmac(token, method, url, body)
 
     IO.inspect [
-      "Accept": "application/json; charset=UTF-8",
+      "Accept": "application/json; charset=utf-8",
+      #"User-Agent": "node-superagent/3.3.1",
       "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)",
       "X-Client-Type": @app_version,
       "X-Api-Version": "0.2",
-      "X-Timestamp": DateTime.utc_now |> DateTime.to_iso8601(),
+      "X-Timestamp": DateTime.utc_now |> DateTime.to_string,
       "X-Authorization": "HMAC #{hmac}",
-      "Content-Type": "application/json; charset=UTF-8"
+      "Content-Type": "application/json; charset=utf-8"
     ]
 
   end
@@ -114,8 +116,8 @@ defmodule JodelClient do
 
 
   defp get_jodels_safe(token, type, opts) do
-    response = get_jodels(token, type, opts)
-    extract_jodels(response) # at this point this is variable is definitely a list (either filled or empty)
+    # this is definitely a list (either filled or empty)
+    get_jodels(token, type, opts) |> extract_jodels
   end
 
   defp extract_jodels({:ok, %{status_code: 200, body: body}}) do
