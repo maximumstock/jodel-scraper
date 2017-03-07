@@ -4,6 +4,7 @@ defmodule ScraperWorker do
   alias JodelClient, as: API
   alias JodelScraper.Jodel
   alias JodelScraper.Repo
+  alias TokenStore
 
   require Logger
 
@@ -20,18 +21,15 @@ defmodule ScraperWorker do
 
   # Callbacks
 
-  def handle_cast({:update_token, token}, state) do
-    new_state = Map.put(state, :token, token)
-    {:noreply, new_state}
-  end
 
   def handle_info(:work, state) do
     Logger.info("Scraping #{state.type} posts for #{state.location.city}")
 
-    case state.type do
-      :popular    -> scrape(state.token.access_token, "popular")
-      :discussed  -> scrape(state.token.access_token, "discussed")
-      _           -> scrape(state.token.access_token, "")
+    response = TokenStore.token(state.location)
+
+    case response do
+      {:ok, token} -> scrape(token, state.type)
+      {:error, reason}  -> Logger.info("TokenStore could not acquire API token for #{state.location.city} (#{state.location.lat},#{state.location.lng}) (#{reason})")
     end
 
     schedule_scraping(state.interval)
@@ -42,35 +40,29 @@ defmodule ScraperWorker do
 
   # API
 
-  def start(state) do
-    Logger.info("Started new #{state.type}-scraper for #{state.location.city} (every #{state.interval}s)")
-
-    authenticate(state.location.city, state.location.lat, state.location.lng)
-
+  defp start(state) do
+    Logger.info("Init #{state.type}-scraper - #{state.location.city} (every #{state.interval}s)")
     schedule_scraping(0)
   end
 
-  def authenticate(city, lat, lng) do
-    API.request_token(city, lat, lng)
-    |> parse_response
-    |> extract_token_data
-    |> update_token
-  end
-
-  def update_token(token) do
-    GenServer.cast(self(), {:update_token, token})
-  end
-
-  def scrape(token, type) do
+  defp scrape(token, type) when is_bitstring(type) do
     API.get_all_jodels(token, type)
     |> process
     |> Enum.each(&(save_to_db &1))
   end
 
+  defp scrape(token, type) when is_atom(type) do
+    case type do
+      :popular    -> scrape(token, "popular")
+      :discussed  -> scrape(token, "discussed")
+      _           -> scrape(token, "")
+    end
+  end
 
   defp schedule_scraping(delay) do
     Process.send_after(self(), :work, delay * 1000)
   end
+
 
   defp save_to_db(post) do
     case Repo.get(Jodel, post.post_id) do
@@ -125,17 +117,8 @@ defmodule ScraperWorker do
 
   end
 
-  defp parse_response({:ok, %{body: body, status_code: 200}}) do
-    body |> Poison.decode!
-  end
-  defp parse_response({type, %{status_code: status_code}}) do
-    Logger.info("Error when authenticating #{status_code}")
-    %{}
-  end
-  defp parse_response(_), do: %{}
-
-  defp extract_token_data(%{}), do: %{}
-  defp extract_token_data(token) do
+  defp extract_token_data({:error, reason}), do: {:error, reason}
+  defp extract_token_data({:ok, token}) do
     %{
       access_token: token["access_token"],
       distinct_id: token["distinct_id"],

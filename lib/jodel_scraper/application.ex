@@ -12,7 +12,8 @@ defmodule JodelScraper.Application do
     children = [
       # Starts a worker by calling: JodelScraper.Worker.start_link(arg1, arg2, arg3)
       # worker(JodelScraper.Worker, [arg1, arg2, arg3]),
-      supervisor(JodelScraper.Repo, [])
+      supervisor(JodelScraper.Repo, []),
+      worker(TokenStore, [])
     ]
 
     locations = [
@@ -41,25 +42,32 @@ defmodule JodelScraper.Application do
 
     base_scraping_interval = Application.get_env(:jodel_scraper, JodelScraper)[:base_scraping_interval]
 
-    popular_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
-        location: loc,
-        type: :popular,
-        interval: 2*base_scraping_interval
-      }], [id: make_ref()]) end)
+    if Mix.env == :prod do
 
-    recent_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
-        location: loc,
-        type: :recent,
-        interval: base_scraping_interval
-      }], [id: make_ref()]) end)
+      popular_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
+          location: loc,
+          type: :popular,
+          interval: 2*base_scraping_interval
+        }], [id: make_ref()]) end)
 
-    discussed_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
-        location: loc,
-        type: :discussed,
-        interval: 2*base_scraping_interval
-      }], [id: make_ref()]) end)
+      recent_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
+          location: loc,
+          type: :recent,
+          interval: base_scraping_interval
+        }], [id: make_ref()]) end)
 
-    children = children ++ popular_children ++ recent_children ++ discussed_children
+      discussed_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
+          location: loc,
+          type: :discussed,
+          interval: 2*base_scraping_interval
+        }], [id: make_ref()]) end)
+
+      children = children ++ popular_children ++ recent_children ++ discussed_children
+    end
+
+    if Mix.env == :dev do
+      children = children ++ [worker(ScraperWorker, [%{location: List.first(locations), type: :popular, interval: base_scraping_interval}])]
+    end
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options

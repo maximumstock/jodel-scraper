@@ -93,7 +93,6 @@ defmodule JodelClient do
 
     [
       "Accept": "application/json; charset=utf-8",
-      #"User-Agent": "node-superagent/3.3.1",
       "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)",
       "X-Client-Type": @app_version,
       "X-Api-Version": "0.2",
