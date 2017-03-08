@@ -112,8 +112,8 @@ defmodule JodelClient do
 
   defp get_all_jodels_perpetually(token, type, after_id, acc) do
     new_jodels = get_jodels(token, type, [limit: @max_jodels_per_request, after: after_id]) |> extract_jodels
-    if length(new_jodels) < @max_jodels_per_request do
-      get_all_jodels_with_comments(token, acc ++ new_jodels)
+    if length(new_jodels) == 0 do
+      get_all_jodels_with_comments(token, acc)
     else
       last_jodel_id = new_jodels |> List.last |> Map.get("post_id")
       get_all_jodels_perpetually(token, type, last_jodel_id, acc ++ new_jodels)
