@@ -47,7 +47,7 @@ defmodule JodelScraper.Application do
       popular_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
           location: loc,
           type: :popular,
-          interval: 2*base_scraping_interval
+          interval: 5*base_scraping_interval
         }], [id: make_ref()]) end)
 
       recent_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
@@ -59,14 +59,14 @@ defmodule JodelScraper.Application do
       discussed_children = Enum.map(locations, fn loc -> worker(ScraperWorker, [%{
           location: loc,
           type: :discussed,
-          interval: 2*base_scraping_interval
+          interval: 5*base_scraping_interval
         }], [id: make_ref()]) end)
 
       children = children ++ popular_children ++ recent_children ++ discussed_children
     end
 
     if Mix.env == :dev do
-      children = children ++ [worker(ScraperWorker, [%{location: List.first(locations), type: :popular, interval: base_scraping_interval}])]
+      children = children ++ [worker(ScraperWorker, [%{location: %{city: "München", lat: 48.1354216, lng: 11.5791273}, type: :popular, interval: base_scraping_interval}])]
     end
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

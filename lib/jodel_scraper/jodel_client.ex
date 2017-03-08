@@ -10,7 +10,9 @@ defmodule JodelClient do
   # @client_id    "cd871f92-a23f-4afc-8fff-51ff9dc9184e" # Jodel client id (see various client implementations on GitHub)
   # @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
 
-  @max_jodels_per_request 100
+  @max_jodels_per_request 100 # 100 seems to be the maximum
+
+  require Logger
 
 
   # PUBLIC API
@@ -52,6 +54,12 @@ defmodule JodelClient do
     get_all_jodels_perpetually(token, type, "", [])
   end
 
+  def get_single_jodel(token, jodel_id) do
+    url = @endpoint_v2 <> "posts/" <> jodel_id
+    headers = default_headers(token, "GET", url, "") ++ ["Authorization": "Bearer #{token}"]
+    HTTPoison.get(url, headers)
+  end
+
   # HELPERS
 
   # Computes a HMAC signature hash for authentication purposes
@@ -60,8 +68,7 @@ defmodule JodelClient do
     purl = URI.parse(url)
     raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
-    :crypto.hmac(:sha, raw, @secret) |> Base.encode16 |> String.downcase
-    #"1ddbf34d9b3f38d9cc2297a1fbfbb8ff2b681d1b"
+    :crypto.hmac(:sha, @secret, raw) |> Base.encode16 |> String.downcase
 
   end
 
@@ -104,19 +111,24 @@ defmodule JodelClient do
   end
 
   defp get_all_jodels_perpetually(token, type, after_id, acc) do
-    new_jodels = get_jodels_safe(token, type, [limit: @max_jodels_per_request, after: after_id])
-    if length(new_jodels) == 0 do
-      acc
+    new_jodels = get_jodels(token, type, [limit: @max_jodels_per_request, after: after_id]) |> extract_jodels
+    if length(new_jodels) < @max_jodels_per_request do
+      get_all_jodels_with_comments(token, acc ++ new_jodels)
     else
       last_jodel_id = new_jodels |> List.last |> Map.get("post_id")
       get_all_jodels_perpetually(token, type, last_jodel_id, acc ++ new_jodels)
     end
   end
 
-
-  defp get_jodels_safe(token, type, opts) do
-    # this is definitely a list (either filled or empty)
-    get_jodels(token, type, opts) |> extract_jodels
+  defp get_all_jodels_with_comments(token, jodels) do
+    jodels
+    |> Enum.map(fn x ->
+        case JodelClient.get_single_jodel(token, x["post_id"]) do
+          {:ok, %{body: body, status_code: 200}} -> Poison.decode!(body)
+          _ -> nil
+        end
+      end)
+    |> Enum.filter(fn x -> x != nil end)
   end
 
   defp extract_jodels({:ok, %{status_code: 200, body: body}}) do
