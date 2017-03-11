@@ -112,6 +112,9 @@ defmodule JodelClient do
 
   defp get_all_jodels_perpetually(token, type, after_id, acc) do
     new_jodels = get_jodels(token, type, [limit: @max_jodels_per_request, after: after_id]) |> extract_jodels
+    # scrape until there is nothing left
+    # length(<list>) < @max_jodels_per_request doesn't work,
+    # as the number of returned jodels isn't always the same (see tests)
     if length(new_jodels) == 0 do
       get_all_jodels_with_comments(token, acc)
     else
@@ -133,6 +136,11 @@ defmodule JodelClient do
 
   defp extract_jodels({:ok, %{status_code: 200, body: body}}) do
     body |> Poison.decode! |> Map.get("posts", [])
+  end
+
+  defp extract_jodels({:ok, %{status_code: status_code, body: body}}) do
+    Logger.info("Error when loading jodels #{status_code} - #{body}")
+    []
   end
 
   defp extract_jodels(_), do: []
