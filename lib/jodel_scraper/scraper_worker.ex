@@ -74,7 +74,7 @@ defmodule ScraperWorker do
 
   defp process(posts) do
 
-    Logger.info("Processing #{length(posts)} jodels")
+    #Logger.info("Processing #{length(posts)} jodels")
 
     posts
     |> Enum.sort(fn (e1, e2) -> e1["updated_at"] >= e2["updated_at"] end) # sort in descending order
