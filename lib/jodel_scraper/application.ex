@@ -65,9 +65,9 @@ defmodule JodelScraper.Application do
       children = children ++ popular_children ++ recent_children ++ discussed_children
     end
 
-    if Mix.env == :dev do
-      children = children ++ [worker(ScraperWorker, [%{location: %{city: "München", lat: 48.1354216, lng: 11.5791273}, type: :popular, interval: base_scraping_interval}])]
-    end
+    # if Mix.env == :dev do
+    #   children = children ++ [worker(ScraperWorker, [%{location: %{city: "München", lat: 48.1354216, lng: 11.5791273}, type: :popular, interval: base_scraping_interval}])]
+    # end
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options

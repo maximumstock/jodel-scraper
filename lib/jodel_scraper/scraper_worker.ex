@@ -25,9 +25,7 @@ defmodule ScraperWorker do
   def handle_info(:work, state) do
     Logger.info("Scraping #{state.type} posts for #{state.location.city}")
 
-    response = TokenStore.token(state.location)
-
-    case response do
+    case TokenStore.token(state.location) do
       {:ok, token} -> scrape(token, state.type)
       {:error, reason}  -> Logger.info("TokenStore could not acquire API token for #{state.location.city} (#{state.location.lat},#{state.location.lng}) (#{reason})")
     end
@@ -46,7 +44,7 @@ defmodule ScraperWorker do
   end
 
   defp scrape(token, type) when is_bitstring(type) do
-    API.get_all_jodels(token, type)
+    API.get_jodel_feed(token, type)
     |> process
     |> Enum.each(&(save_to_db &1))
   end
@@ -115,16 +113,6 @@ defmodule ScraperWorker do
       updated_at: updated_at,
     }
 
-  end
-
-  defp extract_token_data({:error, reason}), do: {:error, reason}
-  defp extract_token_data({:ok, token}) do
-    %{
-      access_token: token["access_token"],
-      distinct_id: token["distinct_id"],
-      expiration_date: token["expiration_date"],
-      refresh_token: token["refresh_token"]
-    }
   end
 
 end
