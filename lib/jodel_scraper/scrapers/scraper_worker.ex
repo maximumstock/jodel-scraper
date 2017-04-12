@@ -17,17 +17,25 @@ defmodule ScraperWorker do
     {:ok, state}
   end
 
+  def start_test do
+    test_state = %{name: "Würzburg", lat: 49.780888, lng: 9.967937, feed: :recent, interval: 3, cache: [], latest: []}
+    GenServer.start_link(__MODULE__, test_state)
+  end
+
 
 
   # Callbacks
 
 
   def handle_info(:work, state) do
-    Logger.info("Scraping #{state.type} posts for #{state.location.city}")
+    Logger.info("Scraping #{state.feed} posts for #{state.name}")
 
-    case TokenStore.token(state.location) do
-      {:ok, token} -> scrape(token, state.type)
-      {:error, reason}  -> Logger.info("TokenStore could not acquire API token for #{state.location.city} (#{state.location.lat},#{state.location.lng}) (#{reason})")
+    # use given coordinates to identify tokens
+    key = %{lat: state.lat,lng: state.lng}
+
+    case TokenStore.token(key) do
+      {:ok, token} -> scrape(token, state.feed)
+      {:error, reason}  -> Logger.info("TokenStore could not acquire API token for #{state.name} (#{state.lat},#{state.lng}) (#{reason})")
     end
 
     schedule_scraping(state.interval)
@@ -39,18 +47,18 @@ defmodule ScraperWorker do
   # API
 
   defp start(state) do
-    Logger.info("Init #{state.type}-scraper - #{state.location.city} (every #{state.interval}s)")
+    Logger.info("Init #{state.feed}-scraper - #{state.name} (every #{state.interval}s)")
     schedule_scraping(0)
   end
 
-  defp scrape(token, type) when is_bitstring(type) do
-    API.get_jodel_feed(token, type)
+  defp scrape(token, feed) when is_bitstring(feed) do
+    API.get_jodel_feed(token, feed)
     |> process
     |> Enum.each(&(save_to_db &1))
   end
 
-  defp scrape(token, type) when is_atom(type) do
-    case type do
+  defp scrape(token, feed) when is_atom(feed) do
+    case feed do
       :popular    -> scrape(token, "popular")
       :discussed  -> scrape(token, "discussed")
       _           -> scrape(token, "")
@@ -75,8 +83,8 @@ defmodule ScraperWorker do
     #Logger.info("Processing #{length(posts)} jodels")
 
     posts
-    |> Enum.sort(fn (e1, e2) -> e1["updated_at"] >= e2["updated_at"] end) # sort in descending order
-    |> Stream.uniq(fn e -> e["post_id"] end) # filter out all identical post_ids that appear second or later
+    # |> Enum.sort(fn (e1, e2) -> e1["updated_at"] >= e2["updated_at"] end) # sort in descending order
+    # |> Stream.uniq(fn e -> e["post_id"] end) # filter out all identical post_ids that appear second or later
     # now there should only be the most recent version for each post, assuming there were duplicates before
     |> Stream.flat_map(&(flatten_post &1)) # list of posts with children -> list of lists of posts and children
     |> Stream.map(&(transform_post &1)) # list of posts and children -> list of posts|children with the relevant data

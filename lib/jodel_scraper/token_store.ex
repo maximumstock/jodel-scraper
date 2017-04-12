@@ -42,7 +42,7 @@ defmodule TokenStore do
   end
 
   defp acquire_token(key) do
-    case JodelClient.request_token(key.city, key.lat, key.lng) do
+    case JodelClient.request_token(key.lat, key.lng) do
       {:ok, %{body: body, status_code: 200}}  -> Poison.decode(body)
       {:ok, %{status_code: status_code}}      -> {:error, status_code}
       _                                       -> {:error, "unknown error"}

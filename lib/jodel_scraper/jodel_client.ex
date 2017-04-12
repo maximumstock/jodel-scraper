@@ -2,8 +2,7 @@ defmodule JodelClient do
 
   @endpoint_v2  "https://api.go-tellm.com/api/v2/"
   # @endpoint_v3  "https://api.go-tellm.com/api/v3/"
-  @app_version  "android_4.38.3" # internal JodelApp client version
-  @secret       "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb" # just a salt value
+  @app_version  "android_4.40.1" # official JodelApp client version
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # static ID defined by JodelApp (see various client implementations on GitHub)
   @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" # presumably a randomly generated SHA256 hash
 
@@ -17,13 +16,17 @@ defmodule JodelClient do
 
   # PUBLIC API
   def test_request do
-    request_token("Würzburg", 49.713862, 9.973702)
+    request_token(49.713862, 9.973702)
   end
 
-  def request_token(city_name, lat, lng) do
+  def extract_token({:ok, %HTTPoison.Response{body: body, status_code: 200}}) do
+    body |> Poison.decode! |> Map.get("access_token")
+  end
+
+  def request_token(lat, lng, location_accuracy \\ 0) do
 
     login_url = @endpoint_v2 <> "users"
-    body = authentication_data(city_name, lat, lng)
+    body = authentication_data(lat, lng, location_accuracy)
     headers = default_headers("", "POST", login_url, body)
 
     HTTPoison.post(login_url, body, headers)
@@ -50,12 +53,14 @@ defmodule JodelClient do
     HTTPoison.get(url, headers)
   end
 
-  def get_jodel_feed(token, feed) do
-    get_jodels_perpetually(token, feed, "", [], false)
+  def get_jodel_feed(token, feed, options \\ []) do
+    get_jodels_perpetually(token, feed, "", [], false, options)
+    # |> Enum.uniq_by(fn x -> x["post_id"] end)
   end
 
-  def get_jodel_feed_with_comments(token, feed) do
-    get_jodels_perpetually(token, feed, "", [], true)
+  def get_jodel_feed_with_comments(token, feed, options \\ []) do
+    get_jodels_perpetually(token, feed, "", [], true, options)
+    # |> Enum.uniq_by(fn x -> x["post_id"] end)
   end
 
   def get_single_jodel(token, jodel_id) do
@@ -83,7 +88,8 @@ defmodule JodelClient do
     purl = URI.parse(url)
     raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
-    :crypto.hmac(:sha, @secret, raw) |> Base.encode16 |> String.downcase
+    salt = :crypto.strong_rand_bytes(24) |> Base.encode16
+    :crypto.hmac(:sha, salt, raw) |> Base.encode16 |> String.downcase
 
   end
 
@@ -95,14 +101,12 @@ defmodule JodelClient do
     "?" <> string
   end
 
-  defp authentication_data(city, lat, lng) do
+  defp authentication_data(lat, lng, loc_accuracy) do
     %{client_id: @client_id,
       device_uid: @device_uid,
       location: %{
-        city: city,
-        loc_accuracy: 0.0,
-        loc_coordinates: %{lat: lat, lng: lng},
-        country: ""
+        loc_accuracy: loc_accuracy,
+        loc_coordinates: %{lat: lat, lng: lng}
       }
     } |> Poison.encode!
   end
@@ -120,19 +124,20 @@ defmodule JodelClient do
     ]
   end
 
-  defp get_jodels_perpetually(token, feed, after_id, acc, with_comments) do
-    new_jodels = get_jodels(token, feed, [limit: @max_jodels_per_request, after: after_id]) |> extract_jodels
+  defp get_jodels_perpetually(token, feed, after_id, acc, with_comments, options) do
+    options = options |> Keyword.put(:limit, @max_jodels_per_request) |> Keyword.put(:after, after_id)
+    new_jodels = get_jodels(token, feed, options) |> extract_jodels
     # scrape until there is nothing left
     # length(<list>) < @max_jodels_per_request doesn't work,
     # as the number of returned jodels isn't always the same (see tests)
     if length(new_jodels) == 0 do
       case with_comments do
-        true -> get_jodels_with_comments_for_jodels(token, acc)
+        true  -> get_jodels_with_comments_for_jodels(token, acc)
         _     -> acc
       end
     else
       last_jodel_id = new_jodels |> List.last |> Map.get("post_id")
-      get_jodels_perpetually(token, feed, last_jodel_id, acc ++ new_jodels, with_comments)
+      get_jodels_perpetually(token, feed, last_jodel_id, acc ++ new_jodels, with_comments, options)
     end
   end
 
@@ -140,7 +145,8 @@ defmodule JodelClient do
   defp extract_jodels({:ok, %{status_code: 200, body: body}}) do
     body |> Poison.decode! |> Map.get("posts", [])
   end
-  defp extract_jodels({:ok, %{status_code: status_code, body: body}}) do
+  defp extract_jodels({:ok, %{status_code: status_code, body: body, headers: headers}}) do
+    IO.inspect(headers)
     Logger.info("Error when loading jodels #{status_code} - #{body}")
     []
   end
