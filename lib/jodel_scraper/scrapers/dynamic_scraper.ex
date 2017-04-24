@@ -17,8 +17,6 @@ defmodule DynamicScraper do
     :lng,
     :feed,
     :interval,
-    cache: [],
-    latest: [],
     overlap_threshold: 10,
     interval_step: 10
   ]
@@ -45,8 +43,6 @@ defmodule DynamicScraper do
   end
 
 
-
-
   # API
 
   @doc """
@@ -54,21 +50,6 @@ defmodule DynamicScraper do
   """
   def update_interval(pid, new_interval) do
     GenServer.cast(pid, {:update_interval, new_interval})
-  end
-
-  @doc """
-  Client-API to retrieve the latest batch of scraped Jodels
-  """
-  def get_latest(pid) do
-    GenServer.call(pid, :get_latest)
-  end
-
-  @doc """
-  Client-API to retrieve the full list of all scraped Jodels since the scraper
-  has been started
-  """
-  def get_cache(pid) do
-    GenServer.call(pid, :get_cache)
   end
 
   @doc """
@@ -113,20 +94,14 @@ defmodule DynamicScraper do
     {:stop, :normal, state}
   end
 
-  def handle_call(:get_latest, state) do
-    latest = Map.get(state, :latest, [])
-    {:reply, latest, state}
-  end
-
-  def handle_call(:get_cache, state) do
-    cache = Map.get(state, :cache, [])
-    {:reply, cache, state}
-  end
-
   def handle_cast({:update_interval, new_interval}, state) do
     Logger.info("Interval change #{state.interval}s -> #{new_interval}s (#{state.name} - #{state.feed})")
     new_state = Map.put(state, :interval, new_interval)
     {:noreply, new_state}
+  end
+
+  def handle_cast({:subscribe, subscriber}, state) do
+    {:noreply, %{state | subscribers: state.subscribers ++ subscriber}}
   end
 
   def handle_cast({:process, data}, state) do
@@ -137,9 +112,8 @@ defmodule DynamicScraper do
       update_interval(self(), new_interval)
     end
 
-    new_state = %{ state | latest: data, cache: state.cache ++ data }
     schedule_scraping(self(), new_interval)
-    {:noreply, new_state}
+    {:noreply, state}
 
   end
 
