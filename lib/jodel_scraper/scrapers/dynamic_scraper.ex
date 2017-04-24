@@ -1,4 +1,4 @@
-defmodule DynamicScraper do
+defmodule JodelScraper.Scrapers.DynamicScraper do
 
   @moduledoc """
 
@@ -6,8 +6,8 @@ defmodule DynamicScraper do
 
   use GenServer
 
-  alias JodelClient, as: API
-  alias TokenStore
+  alias JodelScraper.Client, as: API
+  alias JodelScraper.TokenStore, as: TokenStore
 
   require Logger
 
@@ -17,15 +17,16 @@ defmodule DynamicScraper do
     :lng,
     :feed,
     :interval,
+    latest: [],
     overlap_threshold: 10,
     interval_step: 10
   ]
 
-  def start_link(%DynamicScraper{} = state, options \\ []) do
+  def start_link(%__MODULE__{} = state, options \\ []) do
     GenServer.start_link(__MODULE__, state, options)
   end
 
-  def init(%DynamicScraper{} = state) do
+  def init(%__MODULE__{} = state) do
     schedule_scraping(self(), 0)
     {:ok, state}
   end
@@ -38,7 +39,7 @@ defmodule DynamicScraper do
   A helper method to start up an instance of this scraper implementation for Würzburg
   """
   def start_test do
-    test_state = %DynamicScraper{name: "Würzburg", lat: 49.780888, lng: 9.967937, feed: :recent, interval: 3}
+    test_state = %__MODULE__{name: "Würzburg", lat: 49.780888, lng: 9.967937, feed: :recent, interval: 3}
     GenServer.start_link(__MODULE__, test_state)
   end
 
@@ -100,9 +101,6 @@ defmodule DynamicScraper do
     {:noreply, new_state}
   end
 
-  def handle_cast({:subscribe, subscriber}, state) do
-    {:noreply, %{state | subscribers: state.subscribers ++ subscriber}}
-  end
 
   def handle_cast({:process, data}, state) do
 
@@ -113,7 +111,8 @@ defmodule DynamicScraper do
     end
 
     schedule_scraping(self(), new_interval)
-    {:noreply, state}
+    new_state = %{state | latest: data}
+    {:noreply, new_state}
 
   end
 

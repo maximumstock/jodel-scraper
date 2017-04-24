@@ -1,6 +1,6 @@
-defmodule DistanceOverlapEvaluation do
+defmodule JodelScraper.Evaluations.DistanceOverlap do
 
-  alias JodelClient, as: API
+  alias JodelScraper.Client, as: API
 
   require Logger
 

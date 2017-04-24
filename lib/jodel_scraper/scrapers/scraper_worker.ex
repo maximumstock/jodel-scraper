@@ -1,10 +1,10 @@
-defmodule ScraperWorker do
+defmodule JodelScraper.Scrapers.ScraperWorker do
   use GenServer
 
-  alias JodelClient, as: API
+  alias JodelScraper.Client, as: API
   alias JodelScraper.Jodel
   alias JodelScraper.Repo
-  alias TokenStore
+  alias JodelScraper.TokenStore
 
   require Logger
 

@@ -1,8 +1,8 @@
-defmodule JodelClient do
+defmodule JodelScraper.Client do
 
   @endpoint_v2  "https://api.go-tellm.com/api/v2/"
   # @endpoint_v3  "https://api.go-tellm.com/api/v3/"
-  @app_version  "android_4.40.1" # official JodelApp client version
+  @app_version  "android_4.41.0" # official JodelApp client version
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # static ID defined by JodelApp (see various client implementations on GitHub)
   @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" # presumably a randomly generated SHA256 hash
 
@@ -72,7 +72,7 @@ defmodule JodelClient do
   def get_jodels_with_comments_for_jodels(token, jodels) do
     jodels
     |> Enum.map(fn x ->
-        case JodelClient.get_single_jodel(token, x["post_id"]) do
+        case __MODULE__.get_single_jodel(token, x["post_id"]) do
           {:ok, %{body: body, status_code: 200}} -> Poison.decode!(body)
           _ -> nil
         end
