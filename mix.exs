@@ -33,6 +33,7 @@ defmodule JodelScraper.Mixfile do
      {:ecto, "~> 2.1.2"},
      {:httpoison, "~> 0.11.0"},
      {:poison, "~> 3.0"},
-     {:distillery, "~> 1.0"}]
+     {:distillery, "~> 1.0"},
+     {:gen_stage, "~> 0.11"}]
   end
 end
