@@ -44,17 +44,7 @@ defmodule JodelScraper.Application do
 
     base_scraping_interval = Application.get_env(:jodel_scraper, JodelScraper)[:base_scraping_interval]
 
-    loc1 = Enum.at(locations, 5)
-
-    popular_children = [
-      worker(ScraperWorker, [%{
-        name: loc1.name,
-        lat: loc1.lat,
-        lng: loc1.lng,
-        feed: :popular,
-        interval: base_scraping_interval
-      }])
-    ]
+    popular_children = []
 
     children = children ++
       case Mix.env do

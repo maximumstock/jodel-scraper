@@ -1,4 +1,4 @@
-defmodule JodelScraper.Scrapers.DynamicScraper do
+defmodule Scrapers.DynamicScraper do
 
   @moduledoc """
 
@@ -17,6 +17,8 @@ defmodule JodelScraper.Scrapers.DynamicScraper do
     :lng,
     :feed,
     :interval,
+    id: :rand.uniform(1000),
+    handlers: [],
     latest: [],
     overlap_threshold: 10,
     interval_step: 10
@@ -110,6 +112,10 @@ defmodule JodelScraper.Scrapers.DynamicScraper do
       update_interval(self(), new_interval)
     end
 
+    Enum.each(state.handlers, fn {module, function} ->
+      :erlang.apply(module, function, [data, state])
+    end)
+
     schedule_scraping(self(), new_interval)
     new_state = %{state | latest: data}
     {:noreply, new_state}
@@ -117,7 +123,7 @@ defmodule JodelScraper.Scrapers.DynamicScraper do
   end
 
   def handle_info(:work, state) do
-    Logger.info("Scraping #{state.name} - #{state.feed}")
+    Logger.info("Scraping #{state.name}")
 
     key = %{lat: state.lat, lng: state.lng}
 
