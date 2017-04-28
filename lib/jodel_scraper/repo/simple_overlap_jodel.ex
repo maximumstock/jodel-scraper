@@ -1,11 +1,11 @@
 defmodule JodelScraper.SimpleOverlapJodel do
   use Ecto.Schema
 
-  @primary_key {:id, :integer, []}
+  @primary_key false
 
   schema "simple_overlap_tests" do
-    field :post_id, :string
-    field :scraper_id, :integer
+    field :post_id, :string, primary_key: true
+    field :scraper_id, :integer, primary_key: true
     field :created_at, :utc_datetime
     field :updated_at, :utc_datetime
     field :record_created_at, :utc_datetime

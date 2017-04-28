@@ -43,9 +43,9 @@ defmodule JodelScraper.TokenStore do
 
   defp acquire_token(key) do
     case API.request_token(key.lat, key.lng) do
-      {:ok, %{body: body, status_code: 200}}  -> Poison.decode(body)
-      {:ok, %{status_code: status_code}}      -> {:error, status_code}
-      _                                       -> {:error, "unknown error"}
+      {:ok, %{body: body, status_code: 200}}    -> Poison.decode(body)
+      {:ok, %{status_code: status_code} = msg}  -> {:error, msg}
+      _                                         -> {:error, "unknown error"}
     end
   end
 
