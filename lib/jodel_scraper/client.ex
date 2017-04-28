@@ -146,7 +146,6 @@ defmodule JodelScraper.Client do
     body |> Poison.decode! |> Map.get("posts", [])
   end
   defp extract_jodels({:ok, %{status_code: status_code, body: body, headers: headers}}) do
-    IO.inspect(headers)
     Logger.info("Error when loading jodels - #{status_code}")
     []
   end
