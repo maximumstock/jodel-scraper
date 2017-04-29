@@ -3,7 +3,7 @@ defmodule Evaluations.Frequency.Supervisor do
 
   alias Scrapers.DynamicScraper
 
-  @intervals [60, 120, 300, 600, 1200, 1800, 2400, 3000]
+  @intervals [60, 120, 300, 600, 1200, 1800, 2400, 3600]
 
   def start do
     __MODULE__.start_link()
@@ -19,9 +19,9 @@ defmodule Evaluations.Frequency.Supervisor do
       @intervals
       |> Enum.map(fn interval ->
         %DynamicScraper{
-          name: "Würzburg | recent | #{interval}s",
-          lat: 49.780888,
-          lng: 9.967937,
+          name: "Berlin | recent | #{interval}s",
+          lat: 52.5216702,
+          lng: 13.4026643,
           feed: :recent,
           interval: interval,
           interval_step: 0,
