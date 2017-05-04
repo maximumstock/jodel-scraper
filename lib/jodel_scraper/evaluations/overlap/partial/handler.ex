@@ -6,9 +6,8 @@ defmodule Evaluations.Overlap.Partial.Handler do
   alias JodelScraper.PartialOverlapJodel
 
   def handle(data, state) do
-    data
-    |> Enum.map(&(transform_jodel(&1, state)))
-    |> Enum.map(&(Repo.insert(&1, [on_conflict: :nothing])))
+    list = Enum.map(data, &(transform_jodel(&1, state)))
+    Repo.insert_all(PartialOverlapJodel, list ,[on_conflict: :nothing])
   end
 
   defp transform_jodel(jodel, state) do
@@ -16,7 +15,7 @@ defmodule Evaluations.Overlap.Partial.Handler do
     {:ok, created_at, 0} = jodel["created_at"] |> DateTime.from_iso8601
     {:ok, updated_at, 0} = jodel["updated_at"] |> DateTime.from_iso8601
 
-    %PartialOverlapJodel{
+    %{
       post_id: jodel["post_id"],
       scraper_id: state.id,
       created_at: created_at,

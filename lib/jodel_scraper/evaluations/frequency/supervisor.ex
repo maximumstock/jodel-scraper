@@ -3,7 +3,7 @@ defmodule Evaluations.Frequency.Supervisor do
 
   alias Scrapers.DynamicScraper
 
-  @intervals [60, 120, 300, 600, 1200, 1800, 2400, 3600]
+  @intervals [20, 25, 30, 35, 40, 45, 50, 60]
 
   def start do
     __MODULE__.start_link()

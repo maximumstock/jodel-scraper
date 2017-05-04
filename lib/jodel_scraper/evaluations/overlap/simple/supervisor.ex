@@ -3,6 +3,8 @@ defmodule Evaluations.Overlap.Simple.Supervisor do
 
   alias Scrapers.DynamicScraper
 
+  @intervals [20, 25, 30, 35, 40, 45, 50, 60]
+
   def start do
     __MODULE__.start_link()
   end
@@ -13,16 +15,21 @@ defmodule Evaluations.Overlap.Simple.Supervisor do
 
   def init([]) do
 
+    params =
+      for interval <- @intervals, id <- [1,2] do
+        %{interval: interval, id: id}
+      end
+
     children =
-      Range.new(1, 2)
-      |> Enum.map(fn id ->
+      params
+      |> Enum.map(fn p ->
         %DynamicScraper{
-          name: "Berlin | recent | #{100}s",
-          id: id,
+          name: "Berlin | recent | #{p.interval}s",
+          id: p.id,
           lat: 52.5216702,
           lng: 13.4026643,
           feed: :recent,
-          interval: 100,
+          interval: p.interval,
           interval_step: 0,
           handlers: [{Evaluations.Overlap.Simple.Handler, :handle}]
         }

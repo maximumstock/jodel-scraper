@@ -5,6 +5,7 @@ defmodule JodelScraper.SimpleOverlapJodel do
 
   schema "simple_overlap_tests" do
     field :post_id, :string, primary_key: true
+    field :interval, :integer, primary_key: true
     field :scraper_id, :integer, primary_key: true
     field :created_at, :utc_datetime
     field :updated_at, :utc_datetime

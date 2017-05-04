@@ -4,10 +4,7 @@ defmodule JodelScraper.Client do
   @endpoint_v3  "https://api.go-tellm.com/api/v3/"
   @app_version  "android_4.42.5" # official JodelApp client version
   @client_id    "81e8a76e-1e02-4d17-9ba0-8a7020261b26" # static ID defined by JodelApp (see various client implementations on GitHub)
-  @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" # presumably a randomly generated SHA256 hash
-
-  # @client_id    "cd871f92-a23f-4afc-8fff-51ff9dc9184e" # Jodel client id (see various client implementations on GitHub)
-  # @device_uid   "GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D" # randomly generated SHA256 hash
+  @device_uid   "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f" # randomly generated SHA256 hash
 
   @max_jodels_per_request 100 # 100 seems to be the maximum
 
@@ -146,7 +143,7 @@ defmodule JodelScraper.Client do
     body |> Poison.decode! |> Map.get("posts", [])
   end
   defp extract_jodels({:ok, %{status_code: status_code, body: body, headers: headers}}) do
-    IO.inspect(headers)
+    # IO.inspect(headers)
     Logger.info("Error when loading jodels - #{status_code}")
     []
   end
