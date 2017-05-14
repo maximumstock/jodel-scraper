@@ -3,7 +3,8 @@ defmodule Evaluations.Overlap.Simple.Supervisor do
 
   alias Scrapers.DynamicScraper
 
-  @intervals [20, 25, 30, 35, 40, 45, 50, 60]
+  #@intervals [20, 25, 30, 35, 40, 45, 50, 60]
+  @intervals [5, 10, 15, 20]
 
   def start do
     __MODULE__.start_link()
