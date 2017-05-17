@@ -27,15 +27,24 @@ defmodule GeoProcessing do
   end
 
   def start do
-    generate_grid(49.7203, 49.8707, 10.0342, 9.7938, 5, 5)
-    |> IO.inspect
-    |> Enum.map(fn location ->
-      {:ok, token} = TokenStore.token(%{lat: location.lat, lng: location.lng})
-      API.get_jodel_feed(token, "") |> Enum.map(&(jodel_to_location(&1, location)))
-    end)
-    |> List.flatten
-    |> Enum.uniq
-    |> Enum.group_by(fn x -> "#{x.lat}-#{x.lng}" end)
+
+    {:ok, file} = File.open("geo_processing_result.json", [:write])
+
+    result =
+      generate_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
+      |> IO.inspect
+      |> Enum.map(fn location ->
+        {:ok, token} = TokenStore.token(%{name: "", lat: location.lat, lng: location.lng})
+        API.get_jodel_feed(token, "") |> Enum.map(&(jodel_to_location(&1, location)))
+      end)
+      |> List.flatten
+      |> Enum.uniq
+      |> Enum.group_by(fn x -> "#{x.lat}-#{x.lng}" end)
+      |> Poison.encode!
+
+    IO.binwrite(file, result)
+    File.close(file)
+
   end
 
 end
