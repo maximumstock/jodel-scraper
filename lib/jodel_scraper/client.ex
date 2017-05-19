@@ -52,12 +52,10 @@ defmodule JodelScraper.Client do
 
   def get_jodel_feed(token, feed, options \\ []) do
     get_jodels_perpetually(token, feed, "", [], false, options)
-    # |> Enum.uniq_by(fn x -> x["post_id"] end)
   end
 
   def get_jodel_feed_with_comments(token, feed, options \\ []) do
     get_jodels_perpetually(token, feed, "", [], true, options)
-    # |> Enum.uniq_by(fn x -> x["post_id"] end)
   end
 
   def get_single_jodel(token, jodel_id) do
