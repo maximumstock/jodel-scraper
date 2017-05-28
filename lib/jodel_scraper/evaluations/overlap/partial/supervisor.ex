@@ -37,26 +37,36 @@ defmodule Evaluations.Overlap.Partial.Supervisor do
 
     locations = [%{
         name: "München 1",
+        city: "München",
+        country_code: "DE",
         lat: 48.1485,
         lng: 11.4629,
         id: 1
       }, %{
         name: "München 2",
+        city: "München",
+        country_code: "DE",
         lat: 48.1485,
         lng: 11.4973,
         id: 2
       }, %{
         name: "München 3",
+        city: "München",
+        country_code: "DE",
         lat: 48.1485,
         lng: 11.5296,
         id: 3
       }, %{
         name: "München 4",
+        city: "München",
+        country_code: "DE",
         lat: 48.1485,
         lng: 11.5620,
         id: 4
       }, %{
         name: "München 5",
+        city: "München",
+        country_code: "DE",
         lat: 48.1485,
         lng: 11.6020,
         id: 5
@@ -69,6 +79,8 @@ defmodule Evaluations.Overlap.Partial.Supervisor do
           name: location.name,
           lat: location.lat,
           lng: location.lng,
+          city: location.city,
+          country_code: location.country_code,
           id: location.id,
           feed: :recent,
           interval: 30,

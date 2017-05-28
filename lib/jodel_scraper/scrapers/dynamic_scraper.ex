@@ -6,7 +6,7 @@ defmodule Scrapers.DynamicScraper do
 
   use GenServer
 
-  alias JodelScraper.Client, as: API
+  alias JodelClient, as: API
   alias JodelScraper.TokenStore, as: TokenStore
 
   require Logger
@@ -17,6 +17,9 @@ defmodule Scrapers.DynamicScraper do
     :lng,
     :feed,
     :interval,
+    city: "",
+    country_code: "",
+    accuracy: 0,
     id: :rand.uniform(1000),
     handlers: [],
     latest: [],
@@ -63,15 +66,12 @@ defmodule Scrapers.DynamicScraper do
   end
 
 
-  defp scrape(token, feed) when is_atom(feed), do: scrape(token, map_feed_atom(feed))
-  defp scrape(token, feed) when is_bitstring(feed) do
-    API.get_jodel_feed(token, feed)
-    |> process
+  defp scrape(token, feed) do
+    case API.get_feed(token, feed) do
+      {:ok, feed}       -> process(feed)
+      {:error, reason}  -> Logger.info("Scraping failed")
+    end
   end
-
-  defp map_feed_atom(:popular), do: "popular"
-  defp map_feed_atom(:discussed), do: "discussed"
-  defp map_feed_atom(_), do: ""
 
   defp process(data) do
     GenServer.cast(self(), {:process, data})
@@ -125,7 +125,7 @@ defmodule Scrapers.DynamicScraper do
   def handle_info(:work, state) do
     Logger.info("Scraping #{state.name}")
 
-    key = %{lat: state.lat, lng: state.lng}
+    key = %{lat: state.lat, lng: state.lng, city: state.city, country_code: state.country_code, accuracy: state.accuracy}
 
     case TokenStore.token(key) do
       {:ok, token}      -> scrape(token, state.feed)

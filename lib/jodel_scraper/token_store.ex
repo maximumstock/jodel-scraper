@@ -3,7 +3,7 @@ defmodule JodelScraper.TokenStore do
 
   require Logger
 
-  alias JodelScraper.Client, as: API
+  alias JodelClient, as: API
 
   def start_link do
     GenServer.start_link(__MODULE__, %{}, name: :tokenstore)
@@ -42,9 +42,15 @@ defmodule JodelScraper.TokenStore do
   end
 
   defp acquire_token(key) do
-    case API.request_token(key.lat, key.lng) do
+    lat = key.lat
+    lng = key.lng
+    city = Map.get(key, :city, "")
+    country_code = Map.get(key, :country_code, "")
+    accuracy = Map.get(key, :accuracy, 0)
+
+    case API.request_token(lat, lng, city, country_code, accuracy) do
       {:ok, %{body: body, status_code: 200}}    -> Poison.decode(body)
-      {:ok, %{status_code: status_code} = msg}  -> {:error, msg}
+      {:ok, %{} = msg}                          -> {:error, msg}
       _                                         -> {:error, "unknown error"}
     end
   end
