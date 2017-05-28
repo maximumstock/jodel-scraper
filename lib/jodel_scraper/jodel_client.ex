@@ -69,7 +69,6 @@ defmodule JodelClient do
           {:ok, decoded} <- Poison.decode(body),
           jodels <- Map.get(decoded, "posts")
     do
-      {:ok, 1}
       if length(jodels) < @max_jodels_per_request do
         # we are done
         {:ok, acc ++ jodels}
