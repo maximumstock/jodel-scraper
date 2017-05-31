@@ -1,6 +1,6 @@
 defmodule GeoProcessing do
 
-  alias JodelScraper.Client, as: API
+  alias JodelClient, as: API
   alias JodelScraper.TokenStore
 
   def generate_grid(startLat, endLat, startLng, endLng, columns, rows) do
@@ -26,25 +26,50 @@ defmodule GeoProcessing do
     }
   end
 
+  def get_locations_for_grid(lat_start, lat_end, lng_start, lng_end, lat_num, lng_num) do
+    generate_grid(lat_start, lat_end, lng_start, lng_end, lat_num, lng_num)
+    |> Enum.map(fn location ->
+      {:ok, token} = TokenStore.token(%{lat: location.lat, lng: location.lng})
+      {:ok, feed} = API.get_feed(token, :recent)
+      feed |> Enum.map(&(jodel_to_location(&1, location)))
+    end)
+    |> List.flatten
+    |> Enum.uniq
+    # |> Enum.group_by(fn x -> "#{x.lat}-#{x.lng}" end)
+  end
+
+  def get_geo_for_location_name(name) do
+    key = "AIzaSyBQ8R7dzz_UVZ5yFRUvKeEJA0eFFGuB9hw"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(name)}&key=#{key}"
+    HTTPoison.get(url)
+  end
+
   def start do
+    get_locations_for_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
+    |> IO.inspect()
+    |> Enum.map(fn x ->
+      {:ok, %HTTPoison.Response{body: body, status_code: 200}} = get_geo_for_location_name(x.name)
+      :timer.sleep(1000)
+      {:ok, decoded} = Poison.decode(body)
+      location = List.first(decoded["results"])["geometry"]["location"]
+      lat = location["lat"]
+      lng = location["lng"]
+      %{
+        name: x.name,
+        lat: lat,
+        lng: lng,
+        found_lat: x.lat,
+        found_lng: x.lng
+      } |> IO.inspect()
+    end)
+    |> IO.inspect()
+  end
 
+  def write_file do
+    result = start() |> Poison.encode!()
     {:ok, file} = File.open("geo_processing_result.json", [:write])
-
-    result =
-      generate_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
-      |> IO.inspect
-      |> Enum.map(fn location ->
-        {:ok, token} = TokenStore.token(%{name: "", lat: location.lat, lng: location.lng})
-        API.get_jodel_feed(token, "") |> Enum.map(&(jodel_to_location(&1, location)))
-      end)
-      |> List.flatten
-      |> Enum.uniq
-      |> Enum.group_by(fn x -> "#{x.lat}-#{x.lng}" end)
-      |> Poison.encode!
-
     IO.binwrite(file, result)
     File.close(file)
-
   end
 
 end
