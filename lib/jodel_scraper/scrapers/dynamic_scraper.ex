@@ -69,7 +69,7 @@ defmodule Scrapers.DynamicScraper do
   defp scrape(token, feed) do
     case API.get_feed(token, feed) do
       {:ok, feed}       -> process(feed)
-      {:error, reason}  -> Logger.info("Scraping failed")
+      {:error, reason}  -> Logger.info("Scraping failed - #{reason}")
     end
   end
 
@@ -125,7 +125,7 @@ defmodule Scrapers.DynamicScraper do
   def handle_info(:work, state) do
     Logger.info("Scraping #{state.name}")
 
-    key = %{lat: state.lat, lng: state.lng, city: state.city, country_code: state.country_code, accuracy: state.accuracy}
+    key = %TokenStoreKey{lat: state.lat, lng: state.lng, name: state.city, country_code: state.country_code, accuracy: state.accuracy}
 
     case TokenStore.token(key) do
       {:ok, token}      -> scrape(token, state.feed)

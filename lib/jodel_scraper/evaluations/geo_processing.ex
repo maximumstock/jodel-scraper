@@ -26,10 +26,11 @@ defmodule GeoProcessing do
     }
   end
 
-  def get_locations_for_grid(lat_start, lat_end, lng_start, lng_end, lat_num, lng_num) do
-    generate_grid(lat_start, lat_end, lng_start, lng_end, lat_num, lng_num)
+  def get_locations_for_grid(grid) do
+    grid
     |> Enum.map(fn location ->
-      {:ok, token} = TokenStore.token(%{lat: location.lat, lng: location.lng})
+      key = %TokenStoreKey{lat: location.lat, lng: location.lng}
+      {:ok, token} = TokenStore.token(key)
       {:ok, feed} = API.get_feed(token, :recent)
       feed |> Enum.map(&(jodel_to_location(&1, location)))
     end)
@@ -38,35 +39,38 @@ defmodule GeoProcessing do
     # |> Enum.group_by(fn x -> "#{x.lat}-#{x.lng}" end)
   end
 
-  def get_geo_for_location_name(name) do
+  def get_geo_for_location_name(address) do
     key = "AIzaSyBQ8R7dzz_UVZ5yFRUvKeEJA0eFFGuB9hw"
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(name)}&key=#{key}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(address)}&key=#{key}"
     HTTPoison.get(url)
   end
 
+  def map_location_to_coordinates(location) do
+    {:ok, %HTTPoison.Response{body: body, status_code: 200}} = get_geo_for_location_name(location.name)
+    :timer.sleep(1000)
+    {:ok, decoded} = Poison.decode(body)
+    loc = List.first(decoded["results"])["geometry"]["location"]
+    lat = loc["lat"]
+    lng = loc["lng"]
+    %{
+      name: location.name,
+      lat: lat,
+      lng: lng,
+      found_lat: location.lat,
+      found_lng: location.lng
+    }
+  end
+
   def test do
-    get_locations_for_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
+    generate_grid(49.3203, 50.0707, 11.1042, 9.7938, 1, 1)
+    |> get_locations_for_grid
+    |> Enum.map(&(map_location_to_coordinates(&1)))
   end
 
   def start do
-    get_locations_for_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
-    |> IO.inspect()
-    |> Enum.map(fn x ->
-      {:ok, %HTTPoison.Response{body: body, status_code: 200}} = get_geo_for_location_name(x.name)
-      :timer.sleep(1000)
-      {:ok, decoded} = Poison.decode(body)
-      location = List.first(decoded["results"])["geometry"]["location"]
-      lat = location["lat"]
-      lng = location["lng"]
-      %{
-        name: x.name,
-        lat: lat,
-        lng: lng,
-        found_lat: x.lat,
-        found_lng: x.lng
-      } |> IO.inspect()
-    end)
-    |> IO.inspect()
+    generate_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
+    |> get_locations_for_grid()
+    |> Enum.map(&(map_location_to_coordinates(&1)))
   end
 
   def write_file do
