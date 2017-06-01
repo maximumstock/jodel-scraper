@@ -9,7 +9,7 @@ defmodule JodelClient do
   # Major version has been set to "9", which is not the actual major version
   # See current Android version here:
   # https://play.google.com/store/apps/details?id=com.tellm.android.app&hl=de
-  @app_version  "android_9.46.3"
+  @app_version  "android_9.47.0"
   # static ID defined by JodelApp (see various client implementations on GitHub)
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
   @max_jodels_per_request 100 # 100 seems to be the maximum

@@ -1,4 +1,4 @@
-defmodule JodelScraper.TokenStore do
+defmodule TokenStore do
   use GenServer
 
   require Logger

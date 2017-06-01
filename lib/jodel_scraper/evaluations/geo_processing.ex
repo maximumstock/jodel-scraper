@@ -1,7 +1,7 @@
 defmodule GeoProcessing do
 
   alias JodelClient, as: API
-  alias JodelScraper.TokenStore
+  alias TokenStore
 
   def generate_grid(startLat, endLat, startLng, endLng, columns, rows) do
     stepX = (endLng - startLng) / columns
@@ -42,6 +42,10 @@ defmodule GeoProcessing do
     key = "AIzaSyBQ8R7dzz_UVZ5yFRUvKeEJA0eFFGuB9hw"
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(name)}&key=#{key}"
     HTTPoison.get(url)
+  end
+
+  def test do
+    get_locations_for_grid(49.3203, 50.0707, 11.1042, 9.7938, 7, 7)
   end
 
   def start do

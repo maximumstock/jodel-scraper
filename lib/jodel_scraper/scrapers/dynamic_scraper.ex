@@ -7,7 +7,7 @@ defmodule Scrapers.DynamicScraper do
   use GenServer
 
   alias JodelClient, as: API
-  alias JodelScraper.TokenStore, as: TokenStore
+  alias TokenStore
 
   require Logger
 

@@ -5,7 +5,7 @@ defmodule JodelScraper.Application do
 
   use Application
 
-  alias JodelScraper.TokenStore
+  alias TokenStore
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
