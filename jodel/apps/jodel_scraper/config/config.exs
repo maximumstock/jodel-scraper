@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :scraper, key: :value
+#     config :jodel_scraper, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:scraper, :key)
+#     Application.get_env(:jodel_scraper, :key)
 #
 # Or configure a 3rd-party app:
 #

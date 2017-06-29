@@ -1,6 +1,6 @@
-defmodule ScraperTest do
+defmodule JodelScraperTest do
   use ExUnit.Case
-  doctest Scraper
+  doctest JodelScraper
 
   test "the truth" do
     assert 1 + 1 == 2

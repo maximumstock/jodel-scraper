@@ -1,4 +1,4 @@
-defmodule JodelElixir.Mixfile do
+defmodule Jodel.Mixfile do
   use Mix.Project
 
   def project do

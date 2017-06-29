@@ -8,6 +8,7 @@ defmodule Scrapers.DynamicScraper do
 
   alias JodelClient, as: API
   alias TokenStore
+  alias TokenStoreKey
 
   require Logger
 
@@ -67,6 +68,7 @@ defmodule Scrapers.DynamicScraper do
 
 
   defp scrape(token, feed) do
+    Logger.info("Scraping")
     case API.get_feed(token, feed) do
       {:ok, feed}       -> process(feed)
       {:error, reason}  -> Logger.info("Scraping failed - #{reason}")
