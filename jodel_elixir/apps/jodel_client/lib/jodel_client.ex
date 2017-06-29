@@ -9,15 +9,18 @@ defmodule JodelClient do
   # Major version has been set to "9", which is not the actual major version
   # See current Android version here:
   # https://play.google.com/store/apps/details?id=com.tellm.android.app&hl=de
-  @app_version  "android_9.47.0"
+  @app_version "4.50.1"
   # static ID defined by JodelApp (see various client implementations on GitHub)
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
-  @max_jodels_per_request 100 # 100 seems to be the maximum
+  @max_jodels_per_request 100
 
 
-  """
-  Public API
-  """
+  def test_token() do
+    __MODULE__.request_token(49.23832, 9.82384, "Würzburg", "DE", 100)
+  end
+
+  #########################################################
+  # Public API
 
   @doc """
   Requests a token for a given latitude and longitude.
@@ -29,7 +32,11 @@ defmodule JodelClient do
     data = auth_data(lat, lng, city, country_code, accuracy)
     hmac = generate_hmac("", "POST", url, data)
     headers = default_headers() ++ custom_headers([hmac: hmac])
+    IO.inspect(url)
+    IO.inspect(data)
+    IO.inspect(headers)
     HTTPoison.post(url, data, headers)
+    # {:ok, %HTTPoison.Response{status_code: 200, body: "{\"access_token\": \"55475279-2e42d8c9-208eef4a-afc5-4c49-b23a-bc237c5ac7e9\"}"}}
   end
 
   def extract_token({:ok, response}), do: response |> Map.get(:body) |> Poison.decode! |> Map.get("access_token")
@@ -69,13 +76,13 @@ defmodule JodelClient do
           {:ok, decoded} <- Poison.decode(body),
           jodels <- Map.get(decoded, "posts")
     do
-      if length(jodels) < @max_jodels_per_request do
+      if length(jodels) == 0 do
         # we are done
         {:ok, acc ++ jodels}
       else
         last_jodel_id = jodels |> List.last |> Map.get("post_id")
         opts = opts |> Keyword.put(:after, last_jodel_id)
-        get_feed_perpetually(token, feed, acc + jodels, opts)
+        get_feed_perpetually(token, feed, acc ++ jodels, opts)
       end
     else
       {:ok, %HTTPoison.Error{reason: reason}} -> {:error, reason}
@@ -105,10 +112,8 @@ defmodule JodelClient do
   """
   def get_comments_for_jodels(token, ids), do: Enum.map(ids, fn x -> get_single(token, x["post_id"]) end)
 
-
-  """
-  Private methods
-  """
+  #########################################################
+  # Private methods
 
   defp generate_device_uid() do
     # bytes = :crypto.strong_rand_bytes(64)
@@ -123,17 +128,16 @@ defmodule JodelClient do
     raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
     salt = :crypto.strong_rand_bytes(24) |> Base.encode16
-    :crypto.hmac(:sha, salt, raw) |> Base.encode16
+    :crypto.hmac(:sha, salt, raw) |> Base.encode16 |> String.upcase
   end
 
   defp default_headers() do
-    # all of the following headers are necessary! (as of 28-05-17)
     [
-      "Accept": "application/json; charset=utf-8",
-      "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; E6653 Build/32.2.A.0.305)",
-      "X-Client-Type": @app_version,
+      "Accept-Encoding": "gzip",
+      "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; A0001 Build/MHC19Q",
+      "X-Client-Type": "android_" <> @app_version,
       "X-Api-Version": "0.2",
-      "Content-Type": "application/json; charset=utf-8",
+      "Content-Type": "application/json; charset=UTF-8",
       "X-Timestamp": DateTime.utc_now |> DateTime.to_string,
     ]
   end

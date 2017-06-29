@@ -1,0 +1,2089 @@
+[{
+	"name": "Ansbach",
+	"lng": 10.5719357,
+	"lat": 49.3004246,
+	"found_lng": "11.104200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Oberdachstetten",
+	"lng": 10.4212424,
+	"lat": 49.415491,
+	"found_lng": "11.104200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Lehrberg",
+	"lng": 10.5097539,
+	"lat": 49.3451575,
+	"found_lng": "11.104200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Leutershausen",
+	"lng": 10.413617,
+	"lat": 49.2999321,
+	"found_lng": "11.104200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Schwabach",
+	"lng": 11.0247098,
+	"lat": 49.3284557,
+	"found_lng": "10.917000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Feucht",
+	"lng": 11.2129142,
+	"lat": 49.3753539,
+	"found_lng": "10.917000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Mittelfranken",
+	"lng": 10.6506315,
+	"lat": 49.36332729999999,
+	"found_lng": "10.917000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Nuremberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Schwabach",
+	"lng": 11.0247098,
+	"lat": 49.3284557,
+	"found_lng": "10.729800",
+	"found_lat": "49.320300"
+}, {
+	"name": "Oberasbach",
+	"lng": 10.9712927,
+	"lat": 49.4324695,
+	"found_lng": "10.729800",
+	"found_lat": "49.320300"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.729800",
+	"found_lat": "49.320300"
+}, {
+	"name": "Heilsbronn",
+	"lng": 10.7919753,
+	"lat": 49.3390745,
+	"found_lng": "10.729800",
+	"found_lat": "49.320300"
+}, {
+	"name": "Rohr",
+	"lng": 10.8888964,
+	"lat": 49.3412784,
+	"found_lng": "10.729800",
+	"found_lat": "49.320300"
+}, {
+	"name": "Heilsbronn",
+	"lng": 10.7919753,
+	"lat": 49.3390745,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Weihenzell",
+	"lng": 10.6282366,
+	"lat": 49.3556319,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Ansbach",
+	"lng": 10.5719357,
+	"lat": 49.3004246,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Wolframs-Eschenbach",
+	"lng": 10.7232303,
+	"lat": 49.2262035,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Rohr",
+	"lng": 10.8888964,
+	"lat": 49.3412784,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Sachsen bei Ansbach",
+	"lng": 10.6614458,
+	"lat": 49.2886011,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Roßtal",
+	"lng": 10.8862355,
+	"lat": 49.3989517,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Windsbach",
+	"lng": 10.8310046,
+	"lat": 49.2491373,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Petersaurach",
+	"lng": 10.7461134,
+	"lat": 49.3069161,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Großhabersdorf",
+	"lng": 10.7882362,
+	"lat": 49.4041213,
+	"found_lng": "10.542600",
+	"found_lat": "49.320300"
+}, {
+	"name": "Ansbach",
+	"lng": 10.5719357,
+	"lat": 49.3004246,
+	"found_lng": "10.355400",
+	"found_lat": "49.320300"
+}, {
+	"name": "Weihenzell",
+	"lng": 10.6282366,
+	"lat": 49.3556319,
+	"found_lng": "10.355400",
+	"found_lat": "49.320300"
+}, {
+	"name": "Oberdachstetten",
+	"lng": 10.4212424,
+	"lat": 49.415491,
+	"found_lng": "10.355400",
+	"found_lat": "49.320300"
+}, {
+	"name": "Lehrberg",
+	"lng": 10.5097539,
+	"lat": 49.3451575,
+	"found_lng": "10.355400",
+	"found_lat": "49.320300"
+}, {
+	"name": "Sachsen bei Ansbach",
+	"lng": 10.6614458,
+	"lat": 49.2886011,
+	"found_lng": "10.355400",
+	"found_lat": "49.320300"
+}, {
+	"name": "Neusitz",
+	"lng": 10.2258001,
+	"lat": 49.37167729999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Lehrberg",
+	"lng": 10.5097539,
+	"lat": 49.3451575,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Leutershausen",
+	"lng": 10.413617,
+	"lat": 49.2999321,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Windelsbach",
+	"lng": 10.298146,
+	"lat": 49.3991584,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Ansbach",
+	"lng": 10.5719357,
+	"lat": 49.3004246,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Schillingsfürst",
+	"lng": 10.2622504,
+	"lat": 49.2862476,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Aurach",
+	"lng": 10.4154657,
+	"lat": 49.2464107,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Gebsattel",
+	"lng": 10.2027446,
+	"lat": 49.3543867,
+	"found_lng": "10.168200",
+	"found_lat": "49.320300"
+}, {
+	"name": "Neusitz",
+	"lng": 10.2258001,
+	"lat": 49.37167729999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Rothenburg ob der Tauber",
+	"lng": 10.1867388,
+	"lat": 49.3801834,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Schillingsfürst",
+	"lng": 10.2622504,
+	"lat": 49.2862476,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Wettringen",
+	"lng": 7.317988999999999,
+	"lat": 52.20855599999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Wörnitz",
+	"lng": 10.2389918,
+	"lat": 49.2563247,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Gebsattel",
+	"lng": 10.2027446,
+	"lat": 49.3543867,
+	"found_lng": "9.981000",
+	"found_lat": "49.320300"
+}, {
+	"name": "Schrozberg",
+	"lng": 9.981387699999999,
+	"lat": 49.3454398,
+	"found_lng": "11.104200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Niederstetten",
+	"lng": 9.9194444,
+	"lat": 49.3994656,
+	"found_lng": "11.104200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Rot am See",
+	"lng": 10.0246702,
+	"lat": 49.2520196,
+	"found_lng": "11.104200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Blaufelden",
+	"lng": 9.970427599999999,
+	"lat": 49.2981288,
+	"found_lng": "11.104200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Gerabronn",
+	"lng": 9.921833099999999,
+	"lat": 49.2519225,
+	"found_lng": "11.104200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Fürth",
+	"lng": 10.988667,
+	"lat": 49.4771169,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Nuremberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Schwabach",
+	"lng": 11.0247098,
+	"lat": 49.3284557,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Stein",
+	"lng": 5.766219599999999,
+	"lat": 50.9679738,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Oberasbach",
+	"lng": 10.9712927,
+	"lat": 49.4324695,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Feucht",
+	"lng": 11.2129142,
+	"lat": 49.3753539,
+	"found_lng": "10.917000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Fürth",
+	"lng": 10.988667,
+	"lat": 49.4771169,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Stein",
+	"lng": 5.766219599999999,
+	"lat": 50.9679738,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Oberasbach",
+	"lng": 10.9712927,
+	"lat": 49.4324695,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Cadolzburg",
+	"lng": 10.8582256,
+	"lat": 49.4594708,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Veitsbronn",
+	"lng": 10.8845724,
+	"lat": 49.51201409999999,
+	"found_lng": "10.729800",
+	"found_lat": "49.427500"
+}, {
+	"name": "Cadolzburg",
+	"lng": 10.8582256,
+	"lat": 49.4594708,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Heilsbronn",
+	"lng": 10.7919753,
+	"lat": 49.3390745,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Langenzenn",
+	"lng": 10.7948829,
+	"lat": 49.4934643,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Ammerndorf",
+	"lng": 10.8529477,
+	"lat": 49.4211471,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Roßtal",
+	"lng": 10.8862355,
+	"lat": 49.3989517,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Wilhermsdorf",
+	"lng": 10.7175509,
+	"lat": 49.482048,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Petersaurach",
+	"lng": 10.7461134,
+	"lat": 49.3069161,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Markt Erlbach",
+	"lng": 10.6494675,
+	"lat": 49.49259869999999,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Dietenhofen",
+	"lng": 10.687999,
+	"lat": 49.4001387,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Neuhof an der Zenn",
+	"lng": 10.6433063,
+	"lat": 49.456726,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Großhabersdorf",
+	"lng": 10.7882362,
+	"lat": 49.4041213,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Weihenzell",
+	"lng": 10.6282366,
+	"lat": 49.3556319,
+	"found_lng": "10.542600",
+	"found_lat": "49.427500"
+}, {
+	"name": "Ansbach",
+	"lng": 10.5719357,
+	"lat": 49.3004246,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Lehrberg",
+	"lng": 10.5097539,
+	"lat": 49.3451575,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Flachslanden",
+	"lng": 10.5126976,
+	"lat": 49.3995933,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Illesheim",
+	"lng": 10.3849048,
+	"lat": 49.4753365,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Dietenhofen",
+	"lng": 10.687999,
+	"lat": 49.4001387,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Neuhof an der Zenn",
+	"lng": 10.6433063,
+	"lat": 49.456726,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Ipsheim",
+	"lng": 10.4828923,
+	"lat": 49.5264544,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Weihenzell",
+	"lng": 10.6282366,
+	"lat": 49.3556319,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Oberdachstetten",
+	"lng": 10.4212424,
+	"lat": 49.415491,
+	"found_lng": "10.355400",
+	"found_lat": "49.427500"
+}, {
+	"name": "Neusitz",
+	"lng": 10.2258001,
+	"lat": 49.37167729999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Lehrberg",
+	"lng": 10.5097539,
+	"lat": 49.3451575,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Bad Windsheim",
+	"lng": 10.4147863,
+	"lat": 49.5031221,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Illesheim",
+	"lng": 10.3849048,
+	"lat": 49.4753365,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Windelsbach",
+	"lng": 10.298146,
+	"lat": 49.3991584,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Oberdachstetten",
+	"lng": 10.4212424,
+	"lat": 49.415491,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Gallmersgarten",
+	"lng": 10.2773909,
+	"lat": 49.45828419999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Obernzenn",
+	"lng": 10.4661817,
+	"lat": 49.4498052,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Burgbernheim",
+	"lng": 10.3240377,
+	"lat": 49.45141899999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Flachslanden",
+	"lng": 10.5126976,
+	"lat": 49.3995933,
+	"found_lng": "10.168200",
+	"found_lat": "49.427500"
+}, {
+	"name": "Neusitz",
+	"lng": 10.2258001,
+	"lat": 49.37167729999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Rothenburg ob der Tauber",
+	"lng": 10.1867388,
+	"lat": 49.3801834,
+	"found_lng": "9.981000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Creglingen",
+	"lng": 10.029987,
+	"lat": 49.4714813,
+	"found_lng": "9.981000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Gallmersgarten",
+	"lng": 10.2773909,
+	"lat": 49.45828419999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Burgbernheim",
+	"lng": 10.3240377,
+	"lat": 49.45141899999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.427500"
+}, {
+	"name": "Röttingen",
+	"lng": 9.9718105,
+	"lat": 49.5122355,
+	"found_lng": "11.104200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Schrozberg",
+	"lng": 9.981387699999999,
+	"lat": 49.3454398,
+	"found_lng": "11.104200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Weikersheim",
+	"lng": 9.903450399999999,
+	"lat": 49.48063579999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Creglingen",
+	"lng": 10.029987,
+	"lat": 49.4714813,
+	"found_lng": "11.104200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Niederstetten",
+	"lng": 9.9194444,
+	"lat": 49.3994656,
+	"found_lng": "11.104200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Erlangen",
+	"lng": 11.0119611,
+	"lat": 49.5896744,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Langensendelbach",
+	"lng": 11.0709978,
+	"lat": 49.6397364,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Buckenhof",
+	"lng": 11.0519203,
+	"lat": 49.5910338,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Nuremberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Fürth",
+	"lng": 10.988667,
+	"lat": 49.4771169,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Heroldsberg",
+	"lng": 11.1540547,
+	"lat": 49.5323509,
+	"found_lng": "10.917000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Erlangen",
+	"lng": 11.0119611,
+	"lat": 49.5896744,
+	"found_lng": "10.729800",
+	"found_lat": "49.534700"
+}, {
+	"name": "Buckenhof",
+	"lng": 11.0519203,
+	"lat": 49.5910338,
+	"found_lng": "10.729800",
+	"found_lat": "49.534700"
+}, {
+	"name": "Fürth",
+	"lng": 10.988667,
+	"lat": 49.4771169,
+	"found_lng": "10.729800",
+	"found_lat": "49.534700"
+}, {
+	"name": "Herzogenaurach",
+	"lng": 10.8828577,
+	"lat": 49.5682987,
+	"found_lng": "10.729800",
+	"found_lat": "49.534700"
+}, {
+	"name": "Nürnberg",
+	"lng": 11.0796553,
+	"lat": 49.4254092,
+	"found_lng": "10.729800",
+	"found_lat": "49.534700"
+}, {
+	"name": "Herzogenaurach",
+	"lng": 10.8828577,
+	"lat": 49.5682987,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Veitsbronn",
+	"lng": 10.8845724,
+	"lat": 49.51201409999999,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Neustadt an der Aisch",
+	"lng": 10.6139437,
+	"lat": 49.5795445,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Langenzenn",
+	"lng": 10.7948829,
+	"lat": 49.4934643,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Weisendorf",
+	"lng": 10.8267817,
+	"lat": 49.6226327,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Markt Erlbach",
+	"lng": 10.6494675,
+	"lat": 49.49259869999999,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Emskirchen",
+	"lng": 10.7128091,
+	"lat": 49.5508809,
+	"found_lng": "10.542600",
+	"found_lat": "49.534700"
+}, {
+	"name": "Neustadt an der Aisch",
+	"lng": 10.6139437,
+	"lat": 49.5795445,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Bad Windsheim",
+	"lng": 10.4147863,
+	"lat": 49.5031221,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Markt Erlbach",
+	"lng": 10.6494675,
+	"lat": 49.49259869999999,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Emskirchen",
+	"lng": 10.7128091,
+	"lat": 49.5508809,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Sugenheim",
+	"lng": 10.4360292,
+	"lat": 49.6023027,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Münchsteinach",
+	"lng": 10.5950918,
+	"lat": 49.6398959,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Ipsheim",
+	"lng": 10.4828923,
+	"lat": 49.5264544,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Obernzenn",
+	"lng": 10.4661817,
+	"lat": 49.4498052,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Dietersheim",
+	"lng": 10.5401798,
+	"lat": 49.55802720000001,
+	"found_lng": "10.355400",
+	"found_lat": "49.534700"
+}, {
+	"name": "Bad Windsheim",
+	"lng": 10.4147863,
+	"lat": 49.5031221,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Iphofen",
+	"lng": 10.2578246,
+	"lat": 49.7019444,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Illesheim",
+	"lng": 10.3849048,
+	"lat": 49.4753365,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Sugenheim",
+	"lng": 10.4360292,
+	"lat": 49.6023027,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Ipsheim",
+	"lng": 10.4828923,
+	"lat": 49.5264544,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Uffenheim",
+	"lng": 10.2338007,
+	"lat": 49.5449973,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Dietersheim",
+	"lng": 10.5401798,
+	"lat": 49.55802720000001,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Burgbernheim",
+	"lng": 10.3240377,
+	"lat": 49.45141899999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.534700"
+}, {
+	"name": "Seinsheim",
+	"lng": 10.2215792,
+	"lat": 49.64065,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Hemmersheim",
+	"lng": 10.0964288,
+	"lat": 49.56248799999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Aub",
+	"lng": 35.4793295,
+	"lat": 33.90165380000001,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Uffenheim",
+	"lng": 10.2338007,
+	"lat": 49.5449973,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Creglingen",
+	"lng": 10.029987,
+	"lat": 49.4714813,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Burgbernheim",
+	"lng": 10.3240377,
+	"lat": 49.45141899999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Adelshofen",
+	"lng": 11.1166987,
+	"lat": 48.1831118,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Ohrenbach",
+	"lng": 10.2102154,
+	"lat": 49.4701361,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Markt Nordheim",
+	"lng": 10.3555616,
+	"lat": 49.59106130000001,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Ippesheim",
+	"lng": 10.225098,
+	"lat": 49.6024915,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Sonderhofen",
+	"lng": 10.0019196,
+	"lat": 49.5934987,
+	"found_lng": "9.981000",
+	"found_lat": "49.534700"
+}, {
+	"name": "Giebelstadt",
+	"lng": 9.9452462,
+	"lat": 49.6534732,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Weikersheim",
+	"lng": 9.903450399999999,
+	"lat": 49.48063579999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Röttingen",
+	"lng": 9.9718105,
+	"lat": 49.5122355,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Creglingen",
+	"lng": 10.029987,
+	"lat": 49.4714813,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Hemmersheim",
+	"lng": 10.0964288,
+	"lat": 49.56248799999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Aub",
+	"lng": 35.4793295,
+	"lat": 33.90165380000001,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Igersheim",
+	"lng": 9.8183618,
+	"lat": 49.4911539,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Gaukönigshofen",
+	"lng": 10.0022868,
+	"lat": 49.6332882,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Bieberehren",
+	"lng": 10.0085395,
+	"lat": 49.5150477,
+	"found_lng": "11.104200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Erlangen",
+	"lng": 11.0119611,
+	"lat": 49.5896744,
+	"found_lng": "10.917000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Langensendelbach",
+	"lng": 11.0709978,
+	"lat": 49.6397364,
+	"found_lng": "10.917000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Buckenhof",
+	"lng": 11.0519203,
+	"lat": 49.5910338,
+	"found_lng": "10.917000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Heroldsberg",
+	"lng": 11.1540547,
+	"lat": 49.5323509,
+	"found_lng": "10.917000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Leutenbach",
+	"lng": 9.390455,
+	"lat": 48.88809209999999,
+	"found_lng": "10.917000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Erlangen",
+	"lng": 11.0119611,
+	"lat": 49.5896744,
+	"found_lng": "10.729800",
+	"found_lat": "49.641900"
+}, {
+	"name": "Langensendelbach",
+	"lng": 11.0709978,
+	"lat": 49.6397364,
+	"found_lng": "10.729800",
+	"found_lat": "49.641900"
+}, {
+	"name": "Buckenhof",
+	"lng": 11.0519203,
+	"lat": 49.5910338,
+	"found_lng": "10.729800",
+	"found_lat": "49.641900"
+}, {
+	"name": "Herzogenaurach",
+	"lng": 10.8828577,
+	"lat": 49.5682987,
+	"found_lng": "10.729800",
+	"found_lat": "49.641900"
+}, {
+	"name": "Herzogenaurach",
+	"lng": 10.8828577,
+	"lat": 49.5682987,
+	"found_lng": "10.542600",
+	"found_lat": "49.641900"
+}, {
+	"name": "Weisendorf",
+	"lng": 10.8267817,
+	"lat": 49.6226327,
+	"found_lng": "10.542600",
+	"found_lat": "49.641900"
+}, {
+	"name": "Neustadt an der Aisch",
+	"lng": 10.6139437,
+	"lat": 49.5795445,
+	"found_lng": "10.542600",
+	"found_lat": "49.641900"
+}, {
+	"name": "Markt Bibart",
+	"lng": 10.4252473,
+	"lat": 49.6467216,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Neustadt an der Aisch",
+	"lng": 10.6139437,
+	"lat": 49.5795445,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Sugenheim",
+	"lng": 10.4360292,
+	"lat": 49.6023027,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Münchsteinach",
+	"lng": 10.5950918,
+	"lat": 49.6398959,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Scheinfeld",
+	"lng": 10.4667666,
+	"lat": 49.6671773,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Dietersheim",
+	"lng": 10.5401798,
+	"lat": 49.55802720000001,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Diespeck",
+	"lng": 10.6296655,
+	"lat": 49.5944916,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Vestenbergsgreuth",
+	"lng": 10.651329,
+	"lat": 49.6891975,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Burghaslach",
+	"lng": 10.6005322,
+	"lat": 49.7336234,
+	"found_lng": "10.355400",
+	"found_lat": "49.641900"
+}, {
+	"name": "Markt Bibart",
+	"lng": 10.4252473,
+	"lat": 49.6467216,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Iphofen",
+	"lng": 10.2578246,
+	"lat": 49.7019444,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Sugenheim",
+	"lng": 10.4360292,
+	"lat": 49.6023027,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Scheinfeld",
+	"lng": 10.4667666,
+	"lat": 49.6671773,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Seinsheim",
+	"lng": 10.2215792,
+	"lat": 49.64065,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Unterfranken",
+	"lng": 10.0511934,
+	"lat": 50.0780217,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Rödelsee",
+	"lng": 10.2455194,
+	"lat": 49.72862689999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Markt Einersheim",
+	"lng": 10.2921513,
+	"lat": 49.68726239999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Willanzheim",
+	"lng": 10.2314271,
+	"lat": 49.6809197,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Markt Nordheim",
+	"lng": 10.3555616,
+	"lat": 49.59106130000001,
+	"found_lng": "10.168200",
+	"found_lat": "49.641900"
+}, {
+	"name": "Kitzingen",
+	"lng": 10.1473777,
+	"lat": 49.7340805,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Segnitz",
+	"lng": 10.1423705,
+	"lat": 49.6739081,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Frickenhausen am Main",
+	"lng": 10.0862845,
+	"lat": 49.6710163,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Iphofen",
+	"lng": 10.2578246,
+	"lat": 49.7019444,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Ochsenfurt",
+	"lng": 10.0709014,
+	"lat": 49.6640025,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Seinsheim",
+	"lng": 10.2215792,
+	"lat": 49.64065,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Mainbernheim",
+	"lng": 10.2187183,
+	"lat": 49.7082033,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Obernbreit",
+	"lng": 10.1644528,
+	"lat": 49.659022,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Unterfranken",
+	"lng": 10.0511934,
+	"lat": 50.0780217,
+	"found_lng": "9.981000",
+	"found_lat": "49.641900"
+}, {
+	"name": "Würzburg",
+	"lng": 9.9533548,
+	"lat": 49.79130439999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Giebelstadt",
+	"lng": 9.9452462,
+	"lat": 49.6534732,
+	"found_lng": "11.104200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Segnitz",
+	"lng": 10.1423705,
+	"lat": 49.6739081,
+	"found_lng": "11.104200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Frickenhausen am Main",
+	"lng": 10.0862845,
+	"lat": 49.6710163,
+	"found_lng": "11.104200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Eibelstadt",
+	"lng": 10.0014362,
+	"lat": 49.7255609,
+	"found_lng": "11.104200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Forchheim",
+	"lng": 11.0698834,
+	"lat": 49.7213064,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Baiersdorf",
+	"lng": 11.0345826,
+	"lat": 49.661089,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Hirschaid",
+	"lng": 10.992433,
+	"lat": 49.8190535,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Ebermannstadt",
+	"lng": 11.179088,
+	"lat": 49.7815547,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Oberfranken",
+	"lng": 11.3216311,
+	"lat": 49.9599819,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Buttenheim",
+	"lng": 11.0307407,
+	"lat": 49.8043379,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Hallerndorf",
+	"lng": 10.9796969,
+	"lat": 49.7596718,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Eggolsheim",
+	"lng": 11.0558092,
+	"lat": 49.770304,
+	"found_lng": "10.917000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Frensdorf",
+	"lng": 10.8660754,
+	"lat": 49.8158564,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Stegaurach",
+	"lng": 10.8430814,
+	"lat": 49.8633601,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Forchheim",
+	"lng": 11.0698834,
+	"lat": 49.7213064,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Bamberg",
+	"lng": 10.9027636,
+	"lat": 49.8988135,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Hauptsmoor",
+	"lng": 10.95,
+	"lat": 49.883333,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Höchstadt",
+	"lng": 10.8128359,
+	"lat": 49.7095692,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Hirschaid",
+	"lng": 10.992433,
+	"lat": 49.8190535,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Adelsdorf",
+	"lng": 10.8936134,
+	"lat": 49.7108474,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Röttenbach",
+	"lng": 10.9244766,
+	"lat": 49.668294,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Oberfranken",
+	"lng": 11.3216311,
+	"lat": 49.9599819,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Hallerndorf",
+	"lng": 10.9796969,
+	"lat": 49.7596718,
+	"found_lng": "10.729800",
+	"found_lat": "49.749100"
+}, {
+	"name": "Schlüsselfeld",
+	"lng": 10.6228929,
+	"lat": 49.75751330000001,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Höchstadt",
+	"lng": 10.8128359,
+	"lat": 49.7095692,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Adelsdorf",
+	"lng": 10.8936134,
+	"lat": 49.7108474,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Frensdorf",
+	"lng": 10.8660754,
+	"lat": 49.8158564,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Burghaslach",
+	"lng": 10.6005322,
+	"lat": 49.7336234,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Stegaurach",
+	"lng": 10.8430814,
+	"lat": 49.8633601,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Burgebrach",
+	"lng": 10.7415935,
+	"lat": 49.8264562,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Wachenroth",
+	"lng": 10.7150253,
+	"lat": 49.751617,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Pommersfelden",
+	"lng": 10.821654,
+	"lat": 49.7649714,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Uehlfeld",
+	"lng": 10.718351,
+	"lat": 49.6720051,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Lonnerstadt",
+	"lng": 10.7666276,
+	"lat": 49.7004138,
+	"found_lng": "10.542600",
+	"found_lat": "49.749100"
+}, {
+	"name": "Geiselwind",
+	"lng": 10.4705708,
+	"lat": 49.773093,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Schlüsselfeld",
+	"lng": 10.6228929,
+	"lat": 49.75751330000001,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Burghaslach",
+	"lng": 10.6005322,
+	"lat": 49.7336234,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Ebrach",
+	"lng": 10.4948349,
+	"lat": 49.84815649999999,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Scheinfeld",
+	"lng": 10.4667666,
+	"lat": 49.6671773,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Münchsteinach",
+	"lng": 10.5950918,
+	"lat": 49.6398959,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Burgebrach",
+	"lng": 10.7415935,
+	"lat": 49.8264562,
+	"found_lng": "10.355400",
+	"found_lat": "49.749100"
+}, {
+	"name": "Geiselwind",
+	"lng": 10.4705708,
+	"lat": 49.773093,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Schwarzach am Main",
+	"lng": 10.2292557,
+	"lat": 49.8065839,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Rüdenhausen",
+	"lng": 10.3412699,
+	"lat": 49.7648897,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Rödelsee",
+	"lng": 10.2455194,
+	"lat": 49.72862689999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Kleinlangheim",
+	"lng": 10.2830489,
+	"lat": 49.7745213,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Mainbernheim",
+	"lng": 10.2187183,
+	"lat": 49.7082033,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Kitzingen",
+	"lng": 10.1473777,
+	"lat": 49.7340805,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Prichsenstadt",
+	"lng": 10.3481321,
+	"lat": 49.8179155,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Ebrach",
+	"lng": 10.4948349,
+	"lat": 49.84815649999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Markt Einersheim",
+	"lng": 10.2921513,
+	"lat": 49.68726239999999,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Oberschwarzach",
+	"lng": 10.4098541,
+	"lat": 49.8603173,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Wiesentheid",
+	"lng": 10.341334,
+	"lat": 49.793574,
+	"found_lng": "10.168200",
+	"found_lat": "49.749100"
+}, {
+	"name": "Volkach",
+	"lng": 10.2309327,
+	"lat": 49.8639895,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Albertshofen",
+	"lng": 10.1635535,
+	"lat": 49.76795550000001,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Rottendorf",
+	"lng": 10.0256758,
+	"lat": 49.7922908,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Theilheim",
+	"lng": 10.0294924,
+	"lat": 49.7537341,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Kitzingen",
+	"lng": 10.1473777,
+	"lat": 49.7340805,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Segnitz",
+	"lng": 10.1423705,
+	"lat": 49.6739081,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Schwarzach am Main",
+	"lng": 10.2292557,
+	"lat": 49.8065839,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Mainstockheim",
+	"lng": 10.147974,
+	"lat": 49.77152719999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Biebelried",
+	"lng": 10.0826391,
+	"lat": 49.7643194,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Rödelsee",
+	"lng": 10.2455194,
+	"lat": 49.72862689999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.749100"
+}, {
+	"name": "Würzburg",
+	"lng": 9.9533548,
+	"lat": 49.79130439999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Unterpleichfeld",
+	"lng": 10.0448162,
+	"lat": 49.8680819,
+	"found_lng": "11.104200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Reichenberg",
+	"lng": 15.0543387,
+	"lat": 50.76627999999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Strullendorf",
+	"lng": 10.9689944,
+	"lat": 49.8449044,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Litzendorf",
+	"lng": 11.0092999,
+	"lat": 49.9122463,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Hauptsmoor",
+	"lng": 10.95,
+	"lat": 49.883333,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Hirschaid",
+	"lng": 10.992433,
+	"lat": 49.8190535,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Oberfranken",
+	"lng": 11.3216311,
+	"lat": 49.9599819,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Buttenheim",
+	"lng": 11.0307407,
+	"lat": 49.8043379,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Eggolsheim",
+	"lng": 11.0558092,
+	"lat": 49.770304,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Scheßlitz",
+	"lng": 11.0335991,
+	"lat": 49.9745037,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Heiligenstadt i.OFr.",
+	"lng": 11.1692238,
+	"lat": 49.8645418,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Eichwald",
+	"lng": 11.0351452,
+	"lat": 49.8556002,
+	"found_lng": "10.917000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Gundelsheim",
+	"lng": 9.162461799999999,
+	"lat": 49.2815739,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Bamberg",
+	"lng": 10.9027636,
+	"lat": 49.8988135,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Kemmern",
+	"lng": 10.8770712,
+	"lat": 49.954544,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Bischberg",
+	"lng": 10.8297908,
+	"lat": 49.9091725,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Frensdorf",
+	"lng": 10.8660754,
+	"lat": 49.8158564,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Stegaurach",
+	"lng": 10.8430814,
+	"lat": 49.8633601,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Strullendorf",
+	"lng": 10.9689944,
+	"lat": 49.8449044,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Litzendorf",
+	"lng": 11.0092999,
+	"lat": 49.9122463,
+	"found_lng": "10.729800",
+	"found_lat": "49.856300"
+}, {
+	"name": "Bischberg",
+	"lng": 10.8297908,
+	"lat": 49.9091725,
+	"found_lng": "10.542600",
+	"found_lat": "49.856300"
+}, {
+	"name": "Bamberg",
+	"lng": 10.9027636,
+	"lat": 49.8988135,
+	"found_lng": "10.542600",
+	"found_lat": "49.856300"
+}, {
+	"name": "Stegaurach",
+	"lng": 10.8430814,
+	"lat": 49.8633601,
+	"found_lng": "10.542600",
+	"found_lat": "49.856300"
+}, {
+	"name": "Geiselwind",
+	"lng": 10.4705708,
+	"lat": 49.773093,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Ebrach",
+	"lng": 10.4948349,
+	"lat": 49.84815649999999,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Michelau im Steigerwald",
+	"lng": 10.429871,
+	"lat": 49.9055352,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Oberaurach",
+	"lng": 10.6623304,
+	"lat": 49.92456319999999,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Burgebrach",
+	"lng": 10.7415935,
+	"lat": 49.8264562,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Oberschwarzach",
+	"lng": 10.4098541,
+	"lat": 49.8603173,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Rauhenebrach",
+	"lng": 10.5526544,
+	"lat": 49.8886849,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Burgwindheim",
+	"lng": 10.5981726,
+	"lat": 49.8272413,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Ebracher Forst",
+	"lng": 10.470335,
+	"lat": 49.8696212,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Schlüsselfeld",
+	"lng": 10.6228929,
+	"lat": 49.75751330000001,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Dingolshausen",
+	"lng": 10.3897905,
+	"lat": 49.90689450000001,
+	"found_lng": "10.355400",
+	"found_lat": "49.856300"
+}, {
+	"name": "Volkach",
+	"lng": 10.2309327,
+	"lat": 49.8639895,
+	"found_lng": "10.168200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Schwarzach am Main",
+	"lng": 10.2292557,
+	"lat": 49.8065839,
+	"found_lng": "10.168200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Rüdenhausen",
+	"lng": 10.3412699,
+	"lat": 49.7648897,
+	"found_lng": "10.168200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Michelau im Steigerwald",
+	"lng": 10.429871,
+	"lat": 49.9055352,
+	"found_lng": "10.168200",
+	"found_lat": "49.856300"
+}, {
+	"name": "Unterpleichfeld",
+	"lng": 10.0448162,
+	"lat": 49.8680819,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Volkach",
+	"lng": 10.2309327,
+	"lat": 49.8639895,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Albertshofen",
+	"lng": 10.1635535,
+	"lat": 49.76795550000001,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Rottendorf",
+	"lng": 10.0256758,
+	"lat": 49.7922908,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Kolitzheim",
+	"lng": 10.2363279,
+	"lat": 49.9197686,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Schwarzach am Main",
+	"lng": 10.2292557,
+	"lat": 49.8065839,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Mainstockheim",
+	"lng": 10.147974,
+	"lat": 49.77152719999999,
+	"found_lng": "9.981000",
+	"found_lat": "49.856300"
+}, {
+	"name": "Würzburg",
+	"lng": 9.9533548,
+	"lat": 49.79130439999999,
+	"found_lng": "11.104200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Unterpleichfeld",
+	"lng": 10.0448162,
+	"lat": 49.8680819,
+	"found_lng": "11.104200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Güntersleben",
+	"lng": 9.905246,
+	"lat": 49.8687175,
+	"found_lng": "11.104200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Scheßlitz",
+	"lng": 11.0335991,
+	"lat": 49.9745037,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Litzendorf",
+	"lng": 11.0092999,
+	"lat": 49.9122463,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Memmelsdorf",
+	"lng": 10.9585584,
+	"lat": 49.9312092,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Hauptsmoor",
+	"lng": 10.95,
+	"lat": 49.883333,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Königsfeld",
+	"lng": 8.4177844,
+	"lat": 48.1388403,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Hirschaid",
+	"lng": 10.992433,
+	"lat": 49.8190535,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Breitengüßbach",
+	"lng": 10.8905088,
+	"lat": 49.9725765,
+	"found_lng": "10.917000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Gundelsheim",
+	"lng": 9.162461799999999,
+	"lat": 49.2815739,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Bamberg",
+	"lng": 10.9027636,
+	"lat": 49.8988135,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Kemmern",
+	"lng": 10.8770712,
+	"lat": 49.954544,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Bischberg",
+	"lng": 10.8297908,
+	"lat": 49.9091725,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Scheßlitz",
+	"lng": 11.0335991,
+	"lat": 49.9745037,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Stegaurach",
+	"lng": 10.8430814,
+	"lat": 49.8633601,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Litzendorf",
+	"lng": 11.0092999,
+	"lat": 49.9122463,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Rattelsdorf",
+	"lng": 10.8902037,
+	"lat": 50.0146591,
+	"found_lng": "10.729800",
+	"found_lat": "49.963500"
+}, {
+	"name": "Kemmern",
+	"lng": 10.8770712,
+	"lat": 49.954544,
+	"found_lng": "10.542600",
+	"found_lat": "49.963500"
+}, {
+	"name": "Bischberg",
+	"lng": 10.8297908,
+	"lat": 49.9091725,
+	"found_lng": "10.542600",
+	"found_lat": "49.963500"
+}, {
+	"name": "Bamberg",
+	"lng": 10.9027636,
+	"lat": 49.8988135,
+	"found_lng": "10.542600",
+	"found_lat": "49.963500"
+}, {
+	"name": "Haßfurt",
+	"lng": 10.5169747,
+	"lat": 50.0343812,
+	"found_lng": "10.355400",
+	"found_lat": "49.963500"
+}, {
+	"name": "Sand am Main",
+	"lng": 10.5881804,
+	"lat": 49.9873929,
+	"found_lng": "10.355400",
+	"found_lat": "49.963500"
+}, {
+	"name": "Ebelsbach",
+	"lng": 10.6736086,
+	"lat": 49.9867381,
+	"found_lng": "10.355400",
+	"found_lat": "49.963500"
+}, {
+	"name": "Knetzgau",
+	"lng": 10.5463718,
+	"lat": 49.9925629,
+	"found_lng": "10.355400",
+	"found_lat": "49.963500"
+}, {
+	"name": "Röthlein",
+	"lng": 10.2181693,
+	"lat": 49.9850727,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Kolitzheim",
+	"lng": 10.2363279,
+	"lat": 49.9197686,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Gochsheim",
+	"lng": 10.2774371,
+	"lat": 50.0218713,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Knetzgau",
+	"lng": 10.5463718,
+	"lat": 49.9925629,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Volkach",
+	"lng": 10.2309327,
+	"lat": 49.8639895,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Schonungen",
+	"lng": 10.3092302,
+	"lat": 50.0494347,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Michelau im Steigerwald",
+	"lng": 10.429871,
+	"lat": 49.9055352,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Grettstadt",
+	"lng": 10.3115872,
+	"lat": 49.9857983,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Schwebheim",
+	"lng": 10.2480029,
+	"lat": 49.9875773,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Frankenwinheim",
+	"lng": 10.3144397,
+	"lat": 49.8860889,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Oberschwarzach",
+	"lng": 10.4098541,
+	"lat": 49.8603173,
+	"found_lng": "10.168200",
+	"found_lat": "49.963500"
+}, {
+	"name": "Schweinfurt",
+	"lng": 10.2194228,
+	"lat": 50.0492047,
+	"found_lng": "9.981000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Volkach",
+	"lng": 10.2309327,
+	"lat": 49.8639895,
+	"found_lng": "9.981000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Röthlein",
+	"lng": 10.2181693,
+	"lat": 49.9850727,
+	"found_lng": "9.981000",
+	"found_lat": "49.963500"
+}, {
+	"name": "Werneck",
+	"lng": 10.1007326,
+	"lat": 49.9810957,
+	"found_lng": "9.981000",
+	"found_lat": "49.963500"
+}]
