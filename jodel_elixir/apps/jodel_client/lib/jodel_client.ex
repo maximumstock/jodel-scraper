@@ -9,9 +9,12 @@ defmodule JodelClient do
   # Major version has been set to "9", which is not the actual major version
   # See current Android version here:
   # https://play.google.com/store/apps/details?id=com.tellm.android.app&hl=de
-  @app_version "4.50.1"
+  @app_version "4.48.0"
   # static ID defined by JodelApp (see various client implementations on GitHub)
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
+  # UID that identifies the used phone (see wiki for possible caculation method)
+  # self-generated device uids do not work for some reason
+  @device_uid "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   @max_jodels_per_request 100
 
 
@@ -32,11 +35,7 @@ defmodule JodelClient do
     data = auth_data(lat, lng, city, country_code, accuracy)
     hmac = generate_hmac("", "POST", url, data)
     headers = default_headers() ++ custom_headers([hmac: hmac])
-    IO.inspect(url)
-    IO.inspect(data)
-    IO.inspect(headers)
     HTTPoison.post(url, data, headers)
-    # {:ok, %HTTPoison.Response{status_code: 200, body: "{\"access_token\": \"55475279-2e42d8c9-208eef4a-afc5-4c49-b23a-bc237c5ac7e9\"}"}}
   end
 
   def extract_token({:ok, response}), do: response |> Map.get(:body) |> Poison.decode! |> Map.get("access_token")
@@ -115,17 +114,9 @@ defmodule JodelClient do
   #########################################################
   # Private methods
 
-  defp generate_device_uid() do
-    # bytes = :crypto.strong_rand_bytes(64)
-    # :crypto.hash(:sha256, bytes) |> Base.encode16 |> String.downcase
-
-    # only this one works:
-    "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f"
-  end
-
   defp generate_hmac(token, method, url, body) do
     purl = URI.parse(url)
-    raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_string}" <> "%" <> "" <> "%" <> body
+    raw = method <> "%" <> purl.host <> "%" <> Integer.to_string(purl.port) <> "%" <> purl.path <> "%" <> token <> "%" <> "#{DateTime.utc_now |> DateTime.to_iso8601}" <> "%" <> "" <> "%" <> body
     # create HMAC SHA1 hash
     salt = :crypto.strong_rand_bytes(24) |> Base.encode16
     :crypto.hmac(:sha, salt, raw) |> Base.encode16 |> String.upcase
@@ -137,8 +128,8 @@ defmodule JodelClient do
       "User-Agent": "Jodel/" <> @app_version <> " Dalvik/2.1.0 (Linux; U; Android 6.0.1; A0001 Build/MHC19Q",
       "X-Client-Type": "android_" <> @app_version,
       "X-Api-Version": "0.2",
-      "Content-Type": "application/json; charset=UTF-8",
-      "X-Timestamp": DateTime.utc_now |> DateTime.to_string,
+      "Content-Type": "application/json",
+      "X-Timestamp": DateTime.utc_now |> DateTime.to_iso8601,
     ]
   end
 
@@ -149,7 +140,7 @@ defmodule JodelClient do
   defp auth_data(lat, lng, city, country_code, accuracy) do
     %{
       client_id: @client_id,
-      device_uid: generate_device_uid(),
+      device_uid: @device_uid,
       location: %{
         city: city,
         country: country_code,
